@@ -1,23 +1,54 @@
 package com.example.elitesnote.razredi;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 import java.util.*;
 
 @Entity
 public class Uporabnik {
 	@Id
-	@GenerateValue(strategy= GenerationType.AUTO) // ru si mors maven updejtat da bo delalo
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", nullable = false)
 	private Long id;
 
-
+	@OneToOne
+	@JoinColumn(name = "profil_id")
+	@JsonIgnore
 	Profil profil;
+
+	public Collection<Seznam> getSeznam() {
+		return seznam;
+	}
+
+	public void setSeznam(Collection<Seznam> seznam) {
+		this.seznam = seznam;
+	}
+
+	public Collection<Skupina> getSkupina() {
+		return skupina;
+	}
+
+	public void setSkupina(Collection<Skupina> skupina) {
+		this.skupina = skupina;
+	}
+
+	@OneToMany(mappedBy= "Uporabnik", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
+	Collection<Seznam> seznam;
+
+	@OneToMany(mappedBy= "Uporabnik", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
+	Collection<Skupina> skupina;
+
+	@OneToMany(mappedBy= "Uporabnik", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
+	Collection<Sporocilo> sporocila;
 
 
 	private int idUporabnika;
 	private String uporabniskoIme;
 	private String geslo;
+
+	public Uporabnik() {
+	}
 
 	public String getUporabniskoIme() {
 		return this.uporabniskoIme;
@@ -36,14 +67,22 @@ public class Uporabnik {
 	}
 
 
-	@OneToMany(mappedBy= "Uporabnik", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
-	Collection<Seznam> seznam;
+	public Profil getProfil() {
+		return profil;
+	}
 
-	@OneToMany(mappedBy= "Uporabnik", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
-	Collection<Skupina> skupina;
+	public void setProfil(Profil profil) {
+		this.profil = profil;
+	}
 
-	@OneToMany(mappedBy= "Uporabnik", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
-	Collection<Sporocilo> sporocila;
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	/**
 	 * 
 	 * @param uporabniskoIme

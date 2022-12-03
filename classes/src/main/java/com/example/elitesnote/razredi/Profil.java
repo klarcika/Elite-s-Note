@@ -4,26 +4,51 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.data.annotation.Id;
 
 @Entity
 public class Profil {
-
-
-    Uporabnik uporabnik;
     @Id
-    @GenerateValue(strategy= GenerationType.AUTO) // ru si mors maven updejtat da bo delalo
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
     private Long id;
+
+    @OneToOne
+    @JoinColumn(name = "uporabnik_ID")
+    @JsonIgnore
+    Uporabnik uporabnik;
+
+    public byte getProfilnaSlika() {
+        return profilnaSlika;
+    }
+
     private byte profilnaSlika;
+
+    public Uporabnik getUporabnik() {
+        return uporabnik;
+    }
+
+    public void setUporabnik(Uporabnik uporabnik) {
+        this.uporabnik = uporabnik;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Profil() {
+    }
 
     public void setProfilnaSlika(byte profilnaSlika) {
         this.profilnaSlika = profilnaSlika;
     }
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name ="hisa_id")
-    @OnDelete( action= OnDeleteAction.CASCADE) // vse se zbrise
-    @JsonIgnore
+
+
+
     /**
      * @param slika
      * @param uporabnik
@@ -34,10 +59,17 @@ public class Profil {
     }
 
     /**
-     * @param spremenjen
+     * @param slika
      */
-    public void spremeniProfil(Urejanje spremenjen) {
-        // TODO - implement Urejanje.spremeniProfil
+    public void spremeniSliko(byte slika) {
+        // TODO - implement Profil.spremeniSliko
+        throw new UnsupportedOperationException();
+    }
+    /**
+     * @param geslo
+     */
+    public void spremeniGeslo(String geslo) {
+        // TODO - implement Profil.spremeniGeslo
         throw new UnsupportedOperationException();
     }
 

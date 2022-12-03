@@ -1,19 +1,21 @@
 package com.example.elitesnote.razredi;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 import java.util.*;
 
 @Entity
 public class Administrator {
-
 	@Id
-	@GenerateValue(strategy= GenerationType.AUTO) // ru si mors maven updejtat da bo delalo
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", nullable = false)
 	private Long id;
 
 	private String adminIme;
 	private String geslo;
+
+	public Administrator() {
+	}
 
 	public String getAdminIme() {
 		return this.adminIme;
@@ -31,6 +33,13 @@ public class Administrator {
 		this.geslo = geslo;
 	}
 
+	public Collection<Vsebina> getVsebina() {
+		return vsebina;
+	}
+
+	public void setVsebina(Collection<Vsebina> vsebina) {
+		this.vsebina = vsebina;
+	}
 
 	@OneToMany(mappedBy= "Administrator", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
 	Collection<Vsebina> vsebina;
@@ -38,8 +47,17 @@ public class Administrator {
 	@OneToMany(mappedBy= "Administrator", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
 	Collection<Sporocilo> sporocilo;
 
-	@OneToMany(mappedBy= "Administrator", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
+	@OneToMany(mappedBy= "administrator_ID", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
 	Collection<Obvestilo> obvestilo;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	/**
 	 * 
 	 * @param adminIme
@@ -76,7 +94,7 @@ public class Administrator {
 	 * @param vsebina
 	 */
 	public void izbrisiVsebino(Vsebina vsebina) {
-		// TODO - implement Administrator.izbri�iVsebino
+		// TODO - implement Administrator.izbrisiVsebino
 		throw new UnsupportedOperationException();
 	}
 

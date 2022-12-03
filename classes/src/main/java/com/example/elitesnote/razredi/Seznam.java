@@ -4,24 +4,44 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.data.annotation.Id;
 
 @Entity
 public class Seznam {
 	@Id
-	@GenerateValue(strategy= GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", nullable = false)
 	private Long id;
+
+	@ManyToOne
+	@JoinColumn(name = "uporabnik_ID")
+	@JsonIgnore
 	Uporabnik uporabnik;
 	private String imeSeznama;
+
+	public String getImeSeznama() {
+		return imeSeznama;
+	}
+
+	public Uporabnik getUporabnik() {
+		return uporabnik;
+	}
+
+	public void setUporabnik(Uporabnik uporabnik) {
+		this.uporabnik = uporabnik;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public void setImeSeznama(String imeSeznama) {
 		this.imeSeznama = imeSeznama;
 	}
 
-	@ManyToOne( fetch= FetchType.LAZY)
-	@JoinColumn(name ="Uporabnik_id")
-	@OnDelete( action= OnDeleteAction.CASCADE) // vse se zbrise
-	@JsonIgnore
 	/**
 	 * 
 	 * @param naslovVsebine

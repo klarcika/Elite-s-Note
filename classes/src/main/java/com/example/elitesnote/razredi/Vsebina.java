@@ -5,18 +5,32 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.data.annotation.Id;
 
 @Entity
-public class Vsebina {
-
+public class
+Vsebina {
 	@Id
-	@GenerateValue(strategy= GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", nullable = false)
 	private Long id;
-
+	@ManyToOne( fetch= FetchType.LAZY)
+	@JoinColumn(name ="Administrator_id")
+	@OnDelete( action= OnDeleteAction.CASCADE) // vse se zbrise
+	@JsonIgnore
 
 	private String naslov;
 	private String opis;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Vsebina() {
+	}
 
 	public String getNaslov() {
 		return this.naslov;
@@ -34,10 +48,7 @@ public class Vsebina {
 		this.opis = opis;
 	}
 
-	@ManyToOne( fetch= FetchType.LAZY)
-	@JoinColumn(name ="Administrator_id")
-	@OnDelete( action= OnDeleteAction.CASCADE) // vse se zbrise
-	@JsonIgnore
+
 	/**
 	 *
 	 * @param naslov

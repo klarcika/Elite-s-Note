@@ -4,16 +4,40 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.data.annotation.Id;
 
 @Entity
 public class Skupina {
 	@Id
-	@GenerateValue(strategy= GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", nullable = false)
 	private Long id;
+
+	public void setNaziv(String naziv) {
+		this.naziv = naziv;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "uporabnik_ID")
+	@JsonIgnore
 	Uporabnik uporabnik;
 	private String naziv;
 	private int stUporabnikov;
+
+	public Uporabnik getUporabnik() {
+		return uporabnik;
+	}
+
+	public void setUporabnik(Uporabnik uporabnik) {
+		this.uporabnik = uporabnik;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getNaziv() {
 		return this.naziv;
@@ -23,10 +47,7 @@ public class Skupina {
 		return this.stUporabnikov;
 	}
 
-	@ManyToOne( fetch= FetchType.LAZY)
-	@JoinColumn(name ="Uporabnik_id")
-	@OnDelete( action= OnDeleteAction.CASCADE) // vse se zbrise
-	@JsonIgnore
+
 	/**
 	 * 
 	 * @param nazivSkupine
