@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.util.Collection;
+
 @Entity
 public class Seznam {
 	@Id
@@ -16,6 +18,9 @@ public class Seznam {
 	@JoinColumn(name = "uporabnik_ID")
 	@JsonIgnore
 	Uporabnik uporabnik;
+
+	@OneToMany(mappedBy = "seznam", fetch = FetchType.LAZY)
+	Collection<Vsebina> vsebine;
 	private String imeSeznama;
 
 	public String getImeSeznama() {

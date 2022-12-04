@@ -23,6 +23,7 @@ Vsebina {
 	@JsonIgnore
 	private String naslov;
 	private String opis;
+	private String zanr;
 
 	public Long getId() {
 		return id;

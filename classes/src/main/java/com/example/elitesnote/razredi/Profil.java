@@ -46,6 +46,14 @@ public class Profil {
         this.profilnaSlika = profilnaSlika;
     }
 
+    public void setGeslo(String geslo) {
+        this.uporabnik.setGeslo(geslo);
+    }
+
+    public void setUporabniskoIme(String ime) {
+        this.uporabnik.setUporabniskoIme(ime);
+    }
+
 
 
 
