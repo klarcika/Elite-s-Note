@@ -55,14 +55,12 @@ Vsebina {
 	 * @param opis
 	 */
 	public Vsebina(String naslov, String opis) {
-
-
 		// TODO - implement Vsebina.Vsebina
 		throw new UnsupportedOperationException();
 	}
 
 	public void vseckajkajVsebino() {
-		// TODO - implement Vsebina.v�e�kajVsebino
+		// TODO - implement Vsebina.všečkajVsebino
 		throw new UnsupportedOperationException();
 	}
 
