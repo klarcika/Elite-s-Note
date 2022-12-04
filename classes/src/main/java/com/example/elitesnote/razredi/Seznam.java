@@ -47,7 +47,7 @@ public class Seznam {
 	 * @param naslovVsebine
 	 */
 	public void izbrisiVsebino(String naslovVsebine) {
-		// TODO - implement Seznam.izbri�iVsebino
+		// TODO - implement Seznam.izbrisiVsebino
 		throw new UnsupportedOperationException();
 	}
 

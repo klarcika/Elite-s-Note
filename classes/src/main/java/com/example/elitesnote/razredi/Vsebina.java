@@ -14,10 +14,13 @@ Vsebina {
 	@Column(name = "id", nullable = false)
 	private Long id;
 	@ManyToOne( fetch= FetchType.LAZY)
-	@JoinColumn(name ="Administrator_id")
+	@JoinColumn(name ="Administrator_id")// vse se zbrise
+
+
+	@OneToMany(fetch=FetchType.LAZY)
+	@JoinColumn(name="Seznam_id")
 	@OnDelete( action= OnDeleteAction.CASCADE) // vse se zbrise
 	@JsonIgnore
-
 	private String naslov;
 	private String opis;
 
