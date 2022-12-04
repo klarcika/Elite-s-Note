@@ -1,6 +1,5 @@
 package com.example.elitesnote.razredi;
 
-import Dao.AdministratorRepository;
 import jakarta.persistence.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,12 +16,12 @@ public class Administrator {
 	private String adminIme;
 	private String geslo;
 
-	private AdministratorRepository Dao;
+//	private AdministratorRepository Dao;
 
 	public Administrator() {
 	}
 
-	@GetMapping("/adminIme/{adminIme}")
+/*	@GetMapping("/adminIme/{adminIme}")
 public Iterable<Administrator> vrniImenaAdminov(@PathVariable(name= "adminIme") String adminIme) {
 	return (Iterable<Administrator>) Dao;
 }
@@ -31,6 +30,8 @@ public Iterable<Administrator> vrniImenaAdminov(@PathVariable(name= "adminIme") 
 	public Administrator setAdminIme(@RequestBody Administrator adminIme) {
 		return Dao.save(adminIme);
 	}
+
+ */
 	public String getAdminIme() {
 		return this.adminIme;
 	}
