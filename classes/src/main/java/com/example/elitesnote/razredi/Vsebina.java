@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+//to bi lahko delalo
+//samo ne vem zakaj ne dela
 @Entity
 public class
 Vsebina {
@@ -17,8 +19,12 @@ Vsebina {
 	@JoinColumn(name ="administrator")// vse se zbrise
 	private Administrator administrator;
 
+<<<<<<< HEAD
 
 	@ManyToOne(fetch=FetchType.LAZY)
+=======
+	@OneToMany(fetch=FetchType.LAZY)
+>>>>>>> 5621498b4f7fc21071e8f3d7f65a1ab29d0e5f62
 	@JoinColumn(name="Seznam_id")
 	@OnDelete( action= OnDeleteAction.CASCADE) // vse se zbrise
 	@JsonIgnore
@@ -88,7 +94,6 @@ Vsebina {
 		// TODO - implement Vsebina.komentirajVsebino
 		throw new UnsupportedOperationException();
 	}
-
 	/**
 	 * 
 	 * @param nazivSeznama
