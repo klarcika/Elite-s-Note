@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+//to bi lahko delalo
+//samo ne vem zakaj ne dela
 @Entity
 public class
 Vsebina {
