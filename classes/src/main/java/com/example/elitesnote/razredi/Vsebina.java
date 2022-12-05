@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-//
 @Entity
 public class
 Vsebina {
@@ -16,7 +15,6 @@ Vsebina {
 	private Long id;
 	@ManyToOne( fetch= FetchType.LAZY)
 	@JoinColumn(name ="Administrator_id")// vse se zbrise
-
 
 	@OneToMany(fetch=FetchType.LAZY)
 	@JoinColumn(name="Seznam_id")
@@ -86,7 +84,6 @@ Vsebina {
 		// TODO - implement Vsebina.komentirajVsebino
 		throw new UnsupportedOperationException();
 	}
-
 	/**
 	 * 
 	 * @param nazivSeznama
