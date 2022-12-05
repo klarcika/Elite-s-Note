@@ -44,13 +44,13 @@ public class Administrator {
 		this.vsebina = vsebina;
 	}
 
-	@OneToMany(mappedBy= "Administrator", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
+	@OneToMany(mappedBy= "administrator", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
 	Collection<Vsebina> vsebina;
 
-	@OneToMany(mappedBy= "Administrator", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
+	@OneToMany(mappedBy= "administrator", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
 	Collection<Sporocilo> sporocilo;
 
-	@OneToMany(mappedBy= "administrator_ID", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
+	@OneToMany(mappedBy= "administrator", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
 	Collection<Obvestilo> obvestilo;
 
 	public Long getId() {
