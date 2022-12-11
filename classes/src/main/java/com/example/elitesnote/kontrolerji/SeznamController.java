@@ -20,7 +20,7 @@ public class SeznamController {
         return seznamDao.findAll();
     }
 
-    @GetMapping("/zanr/{zanr}")
+    @GetMapping("/seznami/{zanr}")
     public Iterable<Seznam> vrniPoZanruVsebin(@PathVariable(name = "zanr") String zanr){
         return seznamDao.vrniPoZanru(zanr);
     }

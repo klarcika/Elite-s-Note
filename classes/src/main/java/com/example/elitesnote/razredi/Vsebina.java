@@ -13,8 +13,9 @@ Vsebina {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false)
 	private Long id;
+
 	@ManyToOne( fetch= FetchType.LAZY)
-	@JoinColumn(name ="administrator")// vse se zbrise
+	@JoinColumn(name ="administrator_id")// vse se zbrise
 	private Administrator administrator;
 
 	@ManyToOne(fetch=FetchType.LAZY)

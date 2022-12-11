@@ -12,12 +12,7 @@ public class AdministratorController {
     @Autowired
     private AdministratorRepository adminDao;
 
-    @GetMapping("/adminIme/{adminIme}")
-    public Iterable<Administrator> vrniImenaAdminov(@PathVariable(name= "adminIme") String adminIme) {
-        return (Iterable<Administrator>) adminDao;
-    }
-
-    @PostMapping //admin
+    @PostMapping("/administrator")
     public Administrator setAdminIme(@RequestBody Administrator adminIme) {
         return adminDao.save(adminIme);
     }
