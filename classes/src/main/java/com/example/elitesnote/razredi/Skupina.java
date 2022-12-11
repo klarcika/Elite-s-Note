@@ -17,7 +17,7 @@ public class Skupina {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "uporabnik_ID")
+	@JoinColumn(name = "uporabnik")
 	@JsonIgnore
 	Uporabnik uporabnik;
 	private String naziv;

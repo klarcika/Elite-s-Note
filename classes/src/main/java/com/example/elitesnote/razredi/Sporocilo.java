@@ -13,17 +13,22 @@ public class Sporocilo {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "uporabnisko_ime_ID")
+    @JoinColumn(name = "uporabnik")
     @JsonIgnore
-    Uporabnik uporabniskoIme;
-        private int idSporocilo;
+    private Uporabnik uporabnik;
+
+    @ManyToOne
+    @JoinColumn(name = "administrator")
+    @JsonIgnore
+    private Administrator administrator;
+    private int idSporocilo;
 
     public Uporabnik getUporabniskoIme() {
-        return uporabniskoIme;
+        return uporabnik;
     }
 
     public void setUporabniskoIme(Uporabnik uporabniskoIme) {
-        this.uporabniskoIme = uporabniskoIme;
+        this.uporabnik = uporabniskoIme;
     }
 
     public Long getId() {

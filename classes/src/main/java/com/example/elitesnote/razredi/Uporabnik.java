@@ -33,13 +33,13 @@ public class Uporabnik {
 		this.skupina = skupina;
 	}
 
-	@OneToMany(mappedBy= "Uporabnik", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
+	@OneToMany(mappedBy= "uporabnik", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
 	Collection<Seznam> seznam;
 
-	@OneToMany(mappedBy= "Uporabnik", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
+	@OneToMany(mappedBy= "uporabnik", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
 	Collection<Skupina> skupina;
 
-	@OneToMany(mappedBy= "Uporabnik", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
+	@OneToMany(mappedBy= "uporabnik", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
 	Collection<Sporocilo> sporocila;
 
 

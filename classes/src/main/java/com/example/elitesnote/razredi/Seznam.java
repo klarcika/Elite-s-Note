@@ -15,7 +15,7 @@ public class Seznam {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "uporabnik_ID")
+	@JoinColumn(name = "uporabnik")
 	@JsonIgnore
 	Uporabnik uporabnik;
 

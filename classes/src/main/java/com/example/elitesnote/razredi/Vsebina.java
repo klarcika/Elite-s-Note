@@ -14,12 +14,20 @@ Vsebina {
 	@Column(name = "id", nullable = false)
 	private Long id;
 	@ManyToOne( fetch= FetchType.LAZY)
-	@JoinColumn(name ="Administrator_id")// vse se zbrise
+	@JoinColumn(name ="administrator")// vse se zbrise
+	private Administrator administrator;
 
+<<<<<<< HEAD
+
+	@ManyToOne(fetch=FetchType.LAZY)
+=======
 	@OneToMany(fetch=FetchType.LAZY)
+>>>>>>> 5621498b4f7fc21071e8f3d7f65a1ab29d0e5f62
 	@JoinColumn(name="Seznam_id")
 	@OnDelete( action= OnDeleteAction.CASCADE) // vse se zbrise
 	@JsonIgnore
+	private Seznam seznam;
+
 	private String naslov;
 	private String opis;
 	private String zanr;

@@ -13,7 +13,7 @@ public class Obvestilo {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "administrator_id")
+	@JoinColumn(name = "administrator")
 	@JsonIgnore
 	Administrator administrator;
 	private int idObvestilo;
