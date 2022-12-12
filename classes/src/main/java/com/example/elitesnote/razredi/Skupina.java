@@ -18,7 +18,7 @@ public class Skupina {
 		this.naziv = naziv;
 	}
 
-	@OneToMany(mappedBy= "uporabniki", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
+	@OneToMany(mappedBy= "uporabnik", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
 	Collection<Uporabnik> uporabniki;
 	private String naziv;
 	private int stUporabnikov;
