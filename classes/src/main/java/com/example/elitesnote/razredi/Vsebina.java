@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Entity
 public class
@@ -38,6 +40,12 @@ Vsebina {
 
 	public Vsebina() {
 	}
+/*	@GetMapping() //admin
+	public Iterable<Vsebina> seznamVsebine(@PathVariable(name= "naslov") String naslov){
+		return ;
+	}
+
+ */
 
 	public String getNaslov() {
 		return this.naslov;
