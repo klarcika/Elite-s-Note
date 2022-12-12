@@ -17,27 +17,15 @@ public class Uporabnik {
 	@JsonIgnore
 	Profil profil;
 
-	public Collection<Seznam> getSeznam() {
-		return seznam;
-	}
+	@ManyToOne
+	@JoinColumn(name = "seznam")
+	@JsonIgnore
+	Seznam seznam;
 
-	public void setSeznam(Collection<Seznam> seznam) {
-		this.seznam = seznam;
-	}
-
-	public Collection<Skupina> getSkupina() {
-		return skupina;
-	}
-
-	public void setSkupina(Collection<Skupina> skupina) {
-		this.skupina = skupina;
-	}
-
-	@OneToMany(mappedBy= "uporabnik", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
-	Collection<Seznam> seznam;
-
-	@OneToMany(mappedBy= "uporabnik", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
-	Collection<Skupina> skupina;
+	@ManyToOne
+	@JoinColumn(name = "skupina")
+	@JsonIgnore
+	Skupina skupina;
 
 	@OneToMany(mappedBy= "uporabnik", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
 	Collection<Sporocilo> sporocila;

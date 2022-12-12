@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.util.Collection;
+
 @Entity
 public class Skupina {
 	@Id
@@ -16,20 +18,10 @@ public class Skupina {
 		this.naziv = naziv;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "uporabnik")
-	@JsonIgnore
-	Uporabnik uporabnik;
+	@OneToMany(mappedBy= "uporabniki", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
+	Collection<Uporabnik> uporabniki;
 	private String naziv;
 	private int stUporabnikov;
-
-	public Uporabnik getUporabnik() {
-		return uporabnik;
-	}
-
-	public void setUporabnik(Uporabnik uporabnik) {
-		this.uporabnik = uporabnik;
-	}
 
 	public Long getId() {
 		return id;

@@ -2,6 +2,7 @@ package com.example.elitesnote.kontrolerji;
 
 import com.example.elitesnote.dao.SeznamRepository;
 import com.example.elitesnote.razredi.Seznam;
+import com.example.elitesnote.razredi.Vsebina;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,16 @@ public class SeznamController {
     @GetMapping("/seznami/{zanr}")
     public Iterable<Seznam> vrniPoZanruVsebin(@PathVariable(name = "zanr") String zanr){
         return seznamDao.vrniPoZanru(zanr);
+    }
+
+    @GetMapping("/seznami/{uporabnikovId}")
+    public Iterable<Seznam> vrniUporabnikoveSezname(@PathVariable(name = "id") Long id){
+        return seznamDao.uporabnikoviSeznami(id);
+    }
+
+    @GetMapping("/seznami/{uporabnikovId}&{naslovVsebine}")
+    public Vsebina vsebinaIzSeznama(@PathVariable(name = "id") Long id, @RequestBody String naslov){
+        return seznamDao.vsebinaIzUporSeznama(id, naslov);
     }
 
     @DeleteMapping("seznami/{id}")
