@@ -2,6 +2,8 @@ package com.example.elitesnote.razredi;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.*;
 
@@ -22,22 +24,32 @@ public class Uporabnik {
 	@JsonIgnore
 	Seznam seznam;
 
-	@ManyToOne
-	@JoinColumn(name = "skupina")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "skupina_id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
-	Skupina skupina;
+
+
+	@OneToMany(mappedBy = "uporabnik", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	Collection<Skupina> skupina;
+	//Skupina skupina;
 
 	@OneToMany(mappedBy= "uporabnik", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
 	Collection<Sporocilo> sporocila;
 
-
-	private int idUporabnika;
 	private String uporabniskoIme;
 	private String geslo;
 
 	public Uporabnik() {
 	}
 
+	public Collection<Skupina> getSkupina() {
+		return skupina;
+	}
+
+	public void setSkupina(Collection<Skupina> skupina) {
+		this.skupina = skupina;
+	}
 	public String getUporabniskoIme() {
 		return this.uporabniskoIme;
 	}

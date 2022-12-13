@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("uporabnik")
 public class UporabnikController {
 
     @Autowired
@@ -16,4 +16,17 @@ public class UporabnikController {
     public Uporabnik dodajUporabnika(@RequestBody Uporabnik uporabnik, @PathVariable(name = "id") Long id){
         return uporabnikDao.save(uporabnik);
     }
+
+    @GetMapping
+    public Iterable<Uporabnik> vrniUporabnika(){
+        return uporabnikDao.findAll();
+    }
+
+
+  /*  @GetMapping("/uporabnik/{uporabniskoIme}")
+    public Iterable<Uporabnik> vrniUporabnika(@PathVariable(name = "uporabniskoIme")String uporabniskoIme){
+        return uporabnikDao.vrniUporabnika(uporabniskoIme);
+    }*/
+
+
 }
