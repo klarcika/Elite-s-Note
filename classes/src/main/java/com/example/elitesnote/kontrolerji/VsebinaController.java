@@ -4,6 +4,7 @@ import com.example.elitesnote.dao.VsebinaRepository;
 import com.example.elitesnote.razredi.Vsebina;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,4 +19,11 @@ public class VsebinaController {
     public Iterable<Vsebina> vrniVsebine(){
         return vsebinaDao.findAll();
     }
+
+	@GetMapping() //admin
+	public Iterable<Vsebina> seznamVsebine(@PathVariable(name= "naslov") String naslov){
+		return vsebinaDao.findAll();
+	}
+
+
 }

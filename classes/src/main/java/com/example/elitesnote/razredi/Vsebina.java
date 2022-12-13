@@ -40,12 +40,7 @@ Vsebina {
 
 	public Vsebina() {
 	}
-/*	@GetMapping() //admin
-	public Iterable<Vsebina> seznamVsebine(@PathVariable(name= "naslov") String naslov){
-		return ;
-	}
 
- */
 
 	public String getNaslov() {
 		return this.naslov;

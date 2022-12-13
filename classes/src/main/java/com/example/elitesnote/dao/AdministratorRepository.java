@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface AdministratorRepository extends CrudRepository<Administrator, Long> {
  @Query("select id from Administrator, v Vsebina where  v.administrator_id = id and id=1?")
- List<Vsebina> vrnivVsebino(String naslov);
+ List<Vsebina> vrniVsebino(String naslov);
 
 
 
