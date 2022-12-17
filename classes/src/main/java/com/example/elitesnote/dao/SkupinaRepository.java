@@ -1,6 +1,7 @@
 package com.example.elitesnote.dao;
 import com.example.elitesnote.razredi.Uporabnik;
 import com.example.elitesnote.razredi.Skupina;
+import com.example.elitesnote.razredi.Vsebina;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -26,7 +27,6 @@ public interface SkupinaRepository extends CrudRepository<Skupina, Long> {
     @Query("select s from Skupina s, Uporabnik u where u.skupina = s and s.stUporabnikov >= ?1")
     List<Uporabnik> vrniSkupinoPoStUporabnikov(int stUporabnikov);
 //vrne skupino ki ima stUporabnikov večje od 1
-
 
 
 }
