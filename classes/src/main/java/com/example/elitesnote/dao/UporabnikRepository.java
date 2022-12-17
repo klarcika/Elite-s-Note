@@ -18,4 +18,12 @@ public interface UporabnikRepository extends CrudRepository<Uporabnik, Long> {
     @Query("select s from Skupina s, u Uporabnik where u.skupina= s")
     List<Skupina> vrniSkupine();
 
+
+    //2. sprint
+    @Query("select u Uporabnik u, s Skupina where u.stSkupin>?3")
+    List<Uporabnik> vrniStSkupinUporabnika();
+
+    @Query("select u Uporabnik u, s Seznam where s.uporabnik=u and u.stSeznamov>?3")
+    List<Uporabnik> vrniStSeznamovUporabnika();
+    //uporabnik ki ima več kot 3 sezname
 }

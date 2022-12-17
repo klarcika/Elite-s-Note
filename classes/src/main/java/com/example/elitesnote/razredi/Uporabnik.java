@@ -40,6 +40,26 @@ public class Uporabnik {
 	private String uporabniskoIme;
 	private String geslo;
 
+	public int getStSeznamov() {
+		return stSeznamov;
+	}
+
+	public void setStSeznamov(int stSeznamov) {
+		this.stSeznamov = stSeznamov;
+	}
+
+	private int stSeznamov;
+
+	public int getStSkupin() {
+		return stSkupin;
+	}
+
+	public void setStSkupin(int stSkupin) {
+		this.stSkupin = stSkupin;
+	}
+
+	private int stSkupin;
+
 	public Uporabnik() {
 	}
 

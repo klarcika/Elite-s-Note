@@ -22,6 +22,10 @@ public class UporabnikController {
         return uporabnikDao.findAll();
     }
 
+    @GetMapping("/uporabnik-stSeznamov/{stSeznam}")
+    public Iterable<Uporabnik> vrniStSeznamovUporabnika(@PathVariable(name = "stSeznam") int stSeznamov){
+        return uporabnikDao.vrniStSeznamovUporabnika();
+    }
 
   /*  @GetMapping("/uporabnik/{uporabniskoIme}")
     public Iterable<Uporabnik> vrniUporabnika(@PathVariable(name = "uporabniskoIme")String uporabniskoIme){
