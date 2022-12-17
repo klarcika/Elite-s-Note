@@ -3,7 +3,7 @@ package com.example.elitesnote.kontrolerji;
 import com.example.elitesnote.dao.SkupinaRepository;
 import com.example.elitesnote.razredi.Skupina;
 import com.example.elitesnote.razredi.Uporabnik;
-import com.example.elitesnote.razredi.Vsebina;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
