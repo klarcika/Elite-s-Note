@@ -20,8 +20,7 @@ public interface SkupinaRepository extends CrudRepository<Skupina, Long> {
         //vrne vse skupine?
     List<Skupina> vrniSkupine();
 
-    @Query("select s from Skupina where s.id=?1")
-        //vrne skupino ki ima določen id
+    @Query("select s from Skupina where s.id=?1") //vrne skupino ki ima določen id
     List<Skupina> vrniSkupino(Long id);
 
     @Query("select s from Skupina s, Uporabnik u where u.skupina = s and s.stUporabnikov >= ?1")
