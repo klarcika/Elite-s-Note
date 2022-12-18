@@ -36,7 +36,7 @@ public class AdministratorController {
 
   */
 
-    @GetMapping
+    @GetMapping("/administratorji")
     public Iterable<Administrator> getAdminIme(){
         return adminDao.findAll();
     }

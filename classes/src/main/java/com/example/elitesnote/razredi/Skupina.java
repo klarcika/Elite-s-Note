@@ -19,6 +19,7 @@ public class Skupina {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
 	Uporabnik uporabnik;
+
 	@OneToMany(mappedBy = "skupina", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	Collection<Uporabnik> uporabniki;
 	private String naziv;

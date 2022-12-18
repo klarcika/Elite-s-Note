@@ -8,10 +8,8 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface AdministratorRepository extends CrudRepository<Administrator, Long> {
- @Query("select id from Administrator, v Vsebina where  v.administrator_id = id and id=1?")
- List<Vsebina> vrniVsebino(String naslov);
+ /*@Query("select v from Vsebina v where v.naslov = 1?")
+ Vsebina vrniVsebino(String naslov);
 
-
-
-
+  */
 }

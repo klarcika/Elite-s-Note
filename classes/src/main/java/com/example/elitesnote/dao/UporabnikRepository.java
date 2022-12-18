@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface UporabnikRepository extends CrudRepository<Uporabnik, Long> {
 
-    @Query("select imeSeznama from Seznam, u Uporabnik where u.seznam= imeSeznama ")
+    /*@Query("select imeSeznama from Uporabnik u where u.seznam.naziv= imeSeznama ")
     List<Seznam> vrniSezname(String imeSeznama);
 
     @Query("select u from Uporabnik")List<Uporabnik> vrniUporabnika();
@@ -20,10 +20,12 @@ public interface UporabnikRepository extends CrudRepository<Uporabnik, Long> {
 
 
     //2. sprint
-    @Query("select u Uporabnik u, s Skupina where u.stSkupin>?3")
+    @Query("select u Uporabnik u, s Skupina where u.stSkupin>?1")
     List<Uporabnik> vrniStSkupinUporabnika();
 
-    @Query("select u Uporabnik u, s Seznam where s.uporabnik=u and u.stSeznamov>?3")
+     */
+
+    @Query("select u from Uporabnik u where u.stSeznamov > ?1")
     List<Uporabnik> vrniStSeznamovUporabnika();
     //uporabnik ki ima več kot 3 sezname
 }

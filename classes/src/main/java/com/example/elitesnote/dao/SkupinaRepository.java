@@ -9,18 +9,20 @@ import java.util.List;
 
 public interface SkupinaRepository extends CrudRepository<Skupina, Long> {
 
-    //  @Query("select s from Skupina s, Uporabnik u where s.uporabnik = u and u.id = ?1")
+    @Query("select s from Skupina s, Uporabnik u where s.uporabnik = u and u.id = ?1")
     List<Skupina> dodajUporabnika(Uporabnik uporabnik, Long id);
 
     @Query("select s from Skupina s, Uporabnik u where s.uporabnik = u and u.id = ?1")
     List<Skupina> dodajSkupino(String naziv);
 
 
-    @Query("select s from Skupina s")
+    /*@Query("select s from Skupina s")
         //vrne vse skupine?
     List<Skupina> vrniSkupine();
 
-    @Query("select s from Skupina where s.id=?1") //vrne skupino ki ima določen id
+     */
+
+    @Query("select s from Skupina s where s.id=?1") //vrne skupino ki ima določen id
     List<Skupina> vrniSkupino(Long id);
 
     @Query("select s from Skupina s, Uporabnik u where u.skupina = s and s.stUporabnikov >= ?1")
