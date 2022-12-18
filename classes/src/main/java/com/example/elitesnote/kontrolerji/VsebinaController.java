@@ -20,10 +20,8 @@ public class VsebinaController {
         return vsebinaDao.findAll();
     }
 
-	@GetMapping() //admin
-	public Iterable<Vsebina> seznamVsebine(@PathVariable(name= "naslov") String naslov){
-		return vsebinaDao.findAll();
+	@GetMapping("/seznamVsebine") //admin
+	public Iterable<Vsebina> metodaSeznamVsebine(@PathVariable(name= "naslov") String naslov){
+		return vsebinaDao.seznamVsebine(naslov);
 	}
-
-
 }

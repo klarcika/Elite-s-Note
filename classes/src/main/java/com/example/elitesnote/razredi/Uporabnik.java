@@ -19,20 +19,25 @@ public class Uporabnik {
 	@JsonIgnore
 	Profil profil;
 
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(name = "seznam")
 	@JsonIgnore
 	Seznam seznam;
+
+	 */
+
+	@OneToMany(mappedBy = "uporabnik", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	Collection<Skupina> seznami;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "skupina_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
-
+	Skupina skupina;
 
 	@OneToMany(mappedBy = "uporabnik", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	Collection<Skupina> skupina;
-	//Skupina skupina;
+	Collection<Skupina> skupine;
+
 
 	@OneToMany(mappedBy= "uporabnik", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
 	Collection<Sporocilo> sporocila;
@@ -64,11 +69,11 @@ public class Uporabnik {
 	}
 
 	public Collection<Skupina> getSkupina() {
-		return skupina;
+		return skupine;
 	}
 
 	public void setSkupina(Collection<Skupina> skupina) {
-		this.skupina = skupina;
+		this.skupine = skupina;
 	}
 	public String getUporabniskoIme() {
 		return this.uporabniskoIme;

@@ -16,9 +16,6 @@ public class SkupinaController {
 
     @Autowired
     private SkupinaRepository skupinaDao;
-    @Autowired
-    private UporabnikController uporabnikDao;
-
 
    @GetMapping  //S1
    public Iterable<Skupina> vrniSkupine(){
@@ -34,13 +31,13 @@ public class SkupinaController {
     public Skupina setNaziv(@RequestBody Skupina naziv) {
         return skupinaDao.save(naziv);
     }
-    @PostMapping("/{id_uporabnik}") //S1
+    @PostMapping("/dodajUporabnika/{id_uporabnik}") //S1
     public Iterable<Skupina> dodajUporabnika(@RequestBody Uporabnik uporabnik, @PathVariable(name = "id_uporabnik") Long id){
     return skupinaDao.dodajUporabnika(uporabnik,id);
     }
 
 
-    @DeleteMapping("skupina/{id}") //S1
+    @DeleteMapping("/{id}") //S1
     public ResponseEntity<String> izbrisiSkupino(@PathVariable(name = "id") Long id){
         Optional<Skupina> skupina = skupinaDao.findById(id);
 
@@ -55,7 +52,7 @@ public class SkupinaController {
     }
 
 
-    @PostMapping("/{id_uporabnik}")
+    @PostMapping("/dodajSkupino/{id_uporabnik}")
     public Iterable<Skupina> dodajSkupino(@RequestBody String naziv){
         return skupinaDao.dodajSkupino(naziv);
     }
