@@ -1,6 +1,7 @@
 package com.example.elitesnote.kontrolerji;
 
 import com.example.elitesnote.dao.SkupinaRepository;
+import com.example.elitesnote.razredi.Administrator;
 import com.example.elitesnote.razredi.Skupina;
 import com.example.elitesnote.razredi.Uporabnik;
 
@@ -18,10 +19,7 @@ public class SkupinaController {
     @Autowired
     private UporabnikController uporabnikDao;
 
-    @GetMapping("/hello") //proba
-    public String hello(){
-        return "hello";
-    }
+
    @GetMapping  //S1
    public Iterable<Skupina> vrniSkupine(){
        return skupinaDao.findAll();
@@ -32,12 +30,10 @@ public class SkupinaController {
         return skupinaDao.vrniSkupino(id);
     }
 
-  /*  @PostMapping
-    public Skupina ustvariSkupino(@RequestBody String imeSkupine){
-        return skupinaDao.save(imeSkupine);
+    @PostMapping("/administrator")
+    public Skupina setNaziv(@RequestBody Skupina naziv) {
+        return skupinaDao.save(naziv);
     }
-   */
-
     @PostMapping("/{id_uporabnik}") //S1
     public Iterable<Skupina> dodajUporabnika(@RequestBody Uporabnik uporabnik, @PathVariable(name = "id_uporabnik") Long id){
     return skupinaDao.dodajUporabnika(uporabnik,id);

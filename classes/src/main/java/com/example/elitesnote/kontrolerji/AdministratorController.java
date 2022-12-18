@@ -1,8 +1,10 @@
 package com.example.elitesnote.kontrolerji;
 
 import com.example.elitesnote.dao.AdministratorRepository;
+import com.example.elitesnote.dao.VsebinaRepository;
 import com.example.elitesnote.razredi.Administrator;
 import com.example.elitesnote.razredi.Skupina;
+import com.example.elitesnote.razredi.Vsebina;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

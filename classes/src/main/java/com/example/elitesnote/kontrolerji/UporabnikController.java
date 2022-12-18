@@ -26,11 +26,7 @@ public class UporabnikController {
     public Iterable<Uporabnik> vrniStSeznamovUporabnika(@PathVariable(name = "stSeznam") int stSeznamov){
         return uporabnikDao.vrniStSeznamovUporabnika();
     }
-
-  /*  @GetMapping("/uporabnik/{uporabniskoIme}")
-    public Iterable<Uporabnik> vrniUporabnika(@PathVariable(name = "uporabniskoIme")String uporabniskoIme){
-        return uporabnikDao.vrniUporabnika(uporabniskoIme);
-    }*/
+    
 
 
 }
