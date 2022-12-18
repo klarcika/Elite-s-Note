@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/klarcika/Elite-s-Note/issues"
   },
-  "homepage": "https://github.com/klarcika/Elite-s-Note#readme"
+  "homepage": "https://github.com/klarcika/Elite-s-Note#readme",
+  "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/material": "^5.11.0",
+    "axios": "^1.2.1",
+    "react-router-dom": "^6.5.0"
+  }
 }
