@@ -26,7 +26,7 @@ public class UporabnikController {
     public Iterable<Uporabnik> vrniStSeznamovUporabnika(@PathVariable(name = "stSeznam") int stSeznamov){
         return uporabnikDao.vrniStSeznamovUporabnika();
     }
-    
+
 
 
 }
