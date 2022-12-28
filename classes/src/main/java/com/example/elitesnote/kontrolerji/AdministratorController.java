@@ -18,10 +18,11 @@ public class AdministratorController {
     @Autowired
     private AdministratorRepository adminDao;
 
-    @PostMapping("/administrator")
+    /*@PostMapping("/administrator")
     public Administrator setAdminIme(@RequestBody Administrator adminIme) {
         return adminDao.save(adminIme);
     }
+     */
 
     /*@PutMapping("/admin-update/{id}")
     public ResponseEntity<Skupina> updateAdmin(@PathVariable long id, @RequestBody Administrator administrator) {
