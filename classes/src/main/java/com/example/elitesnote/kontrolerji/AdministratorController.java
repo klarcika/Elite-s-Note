@@ -1,12 +1,11 @@
 package com.example.elitesnote.kontrolerji;
 
 import com.example.elitesnote.dao.AdministratorRepository;
-import com.example.elitesnote.dao.VsebinaRepository;
 import com.example.elitesnote.razredi.Administrator;
 import com.example.elitesnote.razredi.Skupina;
 import com.example.elitesnote.razredi.Uporabnik;
-import com.example.elitesnote.razredi.Vsebina;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
@@ -17,26 +16,48 @@ public class AdministratorController {
     @Autowired
     private AdministratorRepository adminDao;
 
+    // 2. sprint
+    @GetMapping
+    public Iterable<Administrator> vrniAdmin(){
+        return adminDao.findAll();
+    }
+
+    @GetMapping("{id}")
+    public Optional<Administrator> vrniAdmina(@PathVariable(name="id") Long id) {
+        return adminDao.findById(id);
+    }
+
+    @PostMapping("/dodajAdministratorja")
+    public Administrator dodajAdmina(@RequestBody Administrator admin) {
+        return adminDao.save(admin);
+    }
+
+    @PutMapping("/spremeni/{id}")
+    public Administrator spremeniAdmina(@PathVariable(name="id") Long id, @RequestBody Administrator admin) {
+
+        if (!adminDao.existsById(id))
+            return null;
+
+        admin.setId(id);
+        return adminDao.save(admin);
+    }
+
+    @DeleteMapping("/zbrisi/{id}")
+    public Boolean izbrisiAdministratorja(@PathVariable(name="id") Long id) {
+
+        if(!adminDao.existsById(id))
+            return false;
+        adminDao.deleteById(id);
+        return true;
+    }
+
     /*@PostMapping("/administrator")
     public Administrator setAdminIme(@RequestBody Administrator adminIme) {
         return adminDao.save(adminIme);
     }
      */
 
-    /*@PutMapping("/admin-update/{id}")
-    public ResponseEntity<Skupina> updateAdmin(@PathVariable long id, @RequestBody Administrator administrator) {
-        Administrator a= administrator.getId();
 
-        a.setId(administrator.getId());
-        a.setAdminIme(administrator.getAdminIme());
 
-        return ResponseEntity.ok(updateAdmin);
-    }
-  */
-
-    @GetMapping
-    public Iterable<Administrator> vrniAdmin(){
-        return adminDao.findAll();
-    }
 
 }
