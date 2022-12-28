@@ -8,26 +8,29 @@ import org.hibernate.annotations.OnDeleteAction;
 import java.util.Collection;
 
 @Entity
+@Table(name = "skupina")
 public class Skupina {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false)
 	private Long id;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	/*@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "uporabnik_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
 	Uporabnik uporabnik;
+	 */
 
-	@OneToMany(mappedBy = "skupina", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "skupina_uporabnik",
+		joinColumns = @JoinColumn(name = "skupina_id"),
+		inverseJoinColumns = @JoinColumn(name = "uporabnik_id"))
 	Collection<Uporabnik> uporabniki;
+
 	private String naziv;
 	private int stUporabnikov;
 
-	public Collection<Uporabnik> getUporabniki() {
-		return uporabniki;
-	}
 	public Long getId() {
 		return id;
 	}
@@ -45,13 +48,6 @@ public class Skupina {
 
 	public int getStUporabnikov() {
 		return this.stUporabnikov;
-	}
-
-	public Uporabnik getUporabnik() {
-		return uporabnik;
-	}
-	public void setUporabnik(Uporabnik uporabnik) {
-		this.uporabnik=uporabnik;
 	}
 
 	/**

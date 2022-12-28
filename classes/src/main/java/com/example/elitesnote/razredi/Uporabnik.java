@@ -8,39 +8,26 @@ import org.hibernate.annotations.OnDeleteAction;
 import java.util.*;
 
 @Entity
+@Table(name = "uporabnik")
 public class Uporabnik {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false)
 	private Long id;
 
-	@OneToOne
-	@JoinColumn(name = "profil_id")
-	@JsonIgnore
-	Profil profil;
+	@OneToMany(mappedBy = "uporabnik", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	Collection<Seznam> seznami;
 
-	/*@ManyToOne
-	@JoinColumn(name = "seznam")
+	/*@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "skupina")
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
-	Seznam seznam;
+	private Skupina skupina;
 
 	 */
 
-	@OneToMany(mappedBy = "uporabnik", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	Collection<Skupina> seznami;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "skupina_id")
-	@OnDelete(action = OnDeleteAction.CASCADE)
-	@JsonIgnore
-	Skupina skupina;
-
-	@OneToMany(mappedBy = "uporabnik", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy = "uporabniki", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	Collection<Skupina> skupine;
-
-
-	@OneToMany(mappedBy= "uporabnik", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
-	Collection<Sporocilo> sporocila;
 
 	private String uporabniskoIme;
 	private String geslo;
@@ -68,13 +55,6 @@ public class Uporabnik {
 	public Uporabnik() {
 	}
 
-	public Collection<Skupina> getSkupina() {
-		return skupine;
-	}
-
-	public void setSkupina(Collection<Skupina> skupina) {
-		this.skupine = skupina;
-	}
 	public String getUporabniskoIme() {
 		return this.uporabniskoIme;
 	}
@@ -89,15 +69,6 @@ public class Uporabnik {
 
 	public void setGeslo(String geslo) {
 		this.geslo = geslo;
-	}
-
-
-	public Profil getProfil() {
-		return profil;
-	}
-
-	public void setProfil(Profil profil) {
-		this.profil = profil;
 	}
 
 	public Long getId() {
