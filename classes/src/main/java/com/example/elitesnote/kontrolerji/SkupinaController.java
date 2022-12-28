@@ -18,7 +18,7 @@ public class SkupinaController {
     private SkupinaRepository skupinaDao;
 
    // 1. sprint
-   @GetMapping  
+   @GetMapping
    public Iterable<Skupina> vrniSkupine(){
        return skupinaDao.findAll();
    }
@@ -28,7 +28,7 @@ public class SkupinaController {
         return skupinaDao.vrniSkupino(id);
     }
 
-    @PostMapping("/dodajUporabnika")
+    @PostMapping("/dodajSkupino")
     public Skupina dodajSkupino(@RequestBody Skupina skupina) {
         return skupinaDao.save(skupina);
     }
