@@ -28,4 +28,9 @@ public interface UporabnikRepository extends CrudRepository<Uporabnik, Long> {
     @Query("select u from Uporabnik u where u.stSeznamov > ?1")
     List<Uporabnik> vrniStSeznamovUporabnika();
     //uporabnik ki ima več kot 3 sezname
+
+
+    //2. sprint
+    @Query("select u from Uporabnik u inner join Seznam s ON uporabnik.id =  seznam.id where s.imeSeznama like 'A%' ")
+    Uporabnik vrniUporabnika();
 }

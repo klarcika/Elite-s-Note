@@ -16,11 +16,6 @@ public interface SkupinaRepository extends CrudRepository<Skupina, Long> {
     List<Skupina> dodajSkupino(String naziv);
 
 
-    /*@Query("select s from Skupina s")
-        //vrne vse skupine?
-    List<Skupina> vrniSkupine();
-
-     */
 
     @Query("select s from Skupina s where s.id=?1") //vrne skupino ki ima določen id
     List<Skupina> vrniSkupino(Long id);
@@ -29,5 +24,8 @@ public interface SkupinaRepository extends CrudRepository<Skupina, Long> {
     List<Uporabnik> vrniSkupinoPoStUporabnikov(int stUporabnikov);
 //vrne skupino ki ima stUporabnikov večje od 1
 
+    //1.sprint
+    @Query("select s from Skupina s where s.stUporabnikov >= ?1 and  length(s.naziv) >= ?2")
+    List<Skupina>vrniSkupino2();
 
 }

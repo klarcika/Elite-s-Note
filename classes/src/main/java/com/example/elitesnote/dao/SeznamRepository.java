@@ -18,4 +18,6 @@ public interface SeznamRepository extends CrudRepository<Seznam, Long> {
 
     @Query("select v from Vsebina v, Seznam s, Uporabnik u where v.seznam = s and s.uporabnik = u and u.id = ?1 and v.naslov = ?2")
     Vsebina vsebinaIzUporSeznama(Long id, String naslov);
+
+
 }

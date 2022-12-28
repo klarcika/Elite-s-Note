@@ -4,6 +4,7 @@ import com.example.elitesnote.dao.AdministratorRepository;
 import com.example.elitesnote.dao.VsebinaRepository;
 import com.example.elitesnote.razredi.Administrator;
 import com.example.elitesnote.razredi.Skupina;
+import com.example.elitesnote.razredi.Uporabnik;
 import com.example.elitesnote.razredi.Vsebina;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,8 +34,9 @@ public class AdministratorController {
     }
   */
 
-    @GetMapping("/administratorji")
-    public Iterable<Administrator> getAdminIme(){
+    @GetMapping
+    public Iterable<Administrator> vrniAdmin(){
         return adminDao.findAll();
     }
+
 }

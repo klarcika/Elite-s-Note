@@ -39,9 +39,6 @@ public class Uporabnik {
 	Collection<Skupina> skupine;
 
 
-	@OneToMany(mappedBy= "uporabnik", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
-	Collection<Sporocilo> sporocila;
-
 	private String uporabniskoIme;
 	private String geslo;
 
