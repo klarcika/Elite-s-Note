@@ -2,7 +2,6 @@ package com.example.elitesnote.kontrolerji;
 
 import com.example.elitesnote.dao.UporabnikRepository;
 import com.example.elitesnote.razredi.Uporabnik;
-import com.example.elitesnote.razredi.Vsebina;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,10 +28,5 @@ public class UporabnikController {
     }
 
 
-    //2.sprint
-    @GetMapping("/uporabnik_seznam/{id}")
-    public Uporabnik vrniUporabnika(@PathVariable(name = "id") Long id){
-        return uporabnikDao.vrniUporabnika();
-    }
 
 }
