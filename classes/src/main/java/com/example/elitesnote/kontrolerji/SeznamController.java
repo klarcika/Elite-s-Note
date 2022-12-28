@@ -16,10 +16,11 @@ public class SeznamController {
     @Autowired
     private SeznamRepository seznamDao;
 
-    @GetMapping
+    /*@GetMapping
     public Iterable<Seznam> vrniSezname(){
         return seznamDao.findAll();
     }
+     */
 
     @GetMapping("/zanr/{zanr}")
     public Iterable<Seznam> vrniPoZanruVsebin(@PathVariable(name = "zanr") String zanr){

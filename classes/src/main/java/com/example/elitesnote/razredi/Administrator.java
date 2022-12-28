@@ -47,12 +47,6 @@ public class Administrator {
 	@OneToMany(mappedBy= "administrator", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
 	Collection<Vsebina> vsebina;
 
-	@OneToMany(mappedBy= "administrator", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
-	Collection<Sporocilo> sporocilo;
-
-	@OneToMany(mappedBy= "administrator", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
-	Collection<Obvestilo> obvestilo;
-
 	public Long getId() {
 		return id;
 	}

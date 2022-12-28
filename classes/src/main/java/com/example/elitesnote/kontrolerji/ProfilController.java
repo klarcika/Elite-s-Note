@@ -15,10 +15,11 @@ public class ProfilController {
     @Autowired
     private ProfilRepository profilDao;
 
-    @GetMapping("/id/{id}")
+    /*@GetMapping("/id/{id}")
     public Optional<Profil> vrniProfil(@PathVariable(name = "id") Long id){
         return profilDao.findById(id);
     }
+     */
 
     @PutMapping("/spremeni/id/{id}")
     public ResponseEntity<Profil> spremeniProfil(@PathVariable(name = "id") Long id, @RequestBody Profil podrobnosti){
