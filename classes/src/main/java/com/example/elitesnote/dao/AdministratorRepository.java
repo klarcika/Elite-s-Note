@@ -1,6 +1,7 @@
 package com.example.elitesnote.dao;
 
 import com.example.elitesnote.razredi.Administrator;
+import com.example.elitesnote.razredi.Skupina;
 import com.example.elitesnote.razredi.Vsebina;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -12,4 +13,8 @@ public interface AdministratorRepository extends CrudRepository<Administrator, L
  Vsebina vrniVsebino(String naslov);
 
   */
+
+    @Query("select a from Administrator a")
+    List<Administrator> vrniAdmin();
+
 }
