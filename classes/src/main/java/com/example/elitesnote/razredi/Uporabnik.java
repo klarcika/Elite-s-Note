@@ -24,7 +24,7 @@ public class Uporabnik {
 	@OneToMany(mappedBy = "uporabnik", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	Collection<Seznam> seznami;
 
-	@ManyToMany(mappedBy = "uporabniki", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy = "uporabnik", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	Collection<Skupina> skupine;
 
 	private String uporabniskoIme;
