@@ -8,14 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface SkupinaRepository extends CrudRepository<Skupina, Long> {
-
-    @Query("select s from Skupina s, Uporabnik u where s.uporabnik = u and u.id = ?1")
-    List<Skupina> dodajUporabnika(Uporabnik uporabnik, Long id);
-
-    @Query("select s from Skupina s, Uporabnik u where s.uporabnik = u and u.id = ?1")
-    List<Skupina> dodajSkupino(String naziv);
-
-
     /*@Query("select s from Skupina s")
         //vrne vse skupine?
     List<Skupina> vrniSkupine();
@@ -28,6 +20,4 @@ public interface SkupinaRepository extends CrudRepository<Skupina, Long> {
     @Query("select s from Skupina s, Uporabnik u where u.skupina = s and s.stUporabnikov >= ?1")
     List<Uporabnik> vrniSkupinoPoStUporabnikov(int stUporabnikov);
 //vrne skupino ki ima stUporabnikov večje od 1
-
-
 }
