@@ -17,7 +17,7 @@ public class Uporabnik {
 	@OneToOne
 	@JoinColumn(name = "profil_id")
 	@JsonIgnore
-	Profil profil;
+
 
 	/*@ManyToOne
 	@JoinColumn(name = "seznam")
@@ -27,7 +27,7 @@ public class Uporabnik {
 	 */
 
 	@OneToMany(mappedBy = "uporabnik", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	Collection<Skupina> seznami;
+	Collection<Seznam> seznami;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "skupina_id")
@@ -35,12 +35,10 @@ public class Uporabnik {
 	@JsonIgnore
 	Skupina skupina;
 
-	@OneToMany(mappedBy = "uporabnik", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy = "uporabniki", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	Collection<Skupina> skupine;
 
 
-	@OneToMany(mappedBy= "uporabnik", fetch= FetchType.LAZY,cascade= CascadeType.ALL) // relacija
-	Collection<Sporocilo> sporocila;
 
 	private String uporabniskoIme;
 	private String geslo;
@@ -92,21 +90,6 @@ public class Uporabnik {
 	}
 
 
-	public Profil getProfil() {
-		return profil;
-	}
-
-	public void setProfil(Profil profil) {
-		this.profil = profil;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	/**
 	 * 
