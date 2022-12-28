@@ -19,13 +19,6 @@ public class Uporabnik {
 	@JsonIgnore
 
 
-	/*@ManyToOne
-	@JoinColumn(name = "seznam")
-	@JsonIgnore
-	Seznam seznam;
-
-	 */
-
 	@OneToMany(mappedBy = "uporabnik", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	Collection<Seznam> seznami;
 
@@ -35,7 +28,7 @@ public class Uporabnik {
 	@JsonIgnore
 	Skupina skupina;
 
-	@ManyToMany(mappedBy = "uporabniki", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy = "uporabnik", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	Collection<Skupina> skupine;
 
 

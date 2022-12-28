@@ -17,23 +17,20 @@ public class SkupinaController {
     @Autowired
     private SkupinaRepository skupinaDao;
 
-   @GetMapping  //S1
+   // 1. sprint
+   @GetMapping  
    public Iterable<Skupina> vrniSkupine(){
        return skupinaDao.findAll();
    }
 
-    @GetMapping("/skupina-id/{id}") //S1
+    @GetMapping("/skupina-id/{id}")
     public Iterable<Skupina> vrniSkupino(@PathVariable(name = "naziv") Long id){
         return skupinaDao.vrniSkupino(id);
     }
 
-    @PostMapping("/dodaj")
-    public Skupina setNaziv(@RequestBody Skupina naziv) {
-        return skupinaDao.save(naziv);
-    }
-    @PostMapping("/dodaj_uporabnika/{id_uporabnik}") //S1
-    public Iterable<Skupina> dodajUporabnika(@RequestBody Uporabnik uporabnik, @PathVariable(name = "id_uporabnik") Long id){
-    return skupinaDao.dodajUporabnika(uporabnik,id);
+    @PostMapping("/dodajUporabnika")
+    public Skupina dodajSkupino(@RequestBody Skupina skupina) {
+        return skupinaDao.save(skupina);
     }
 
 
@@ -52,8 +49,9 @@ public class SkupinaController {
     }
 
 
-    @PostMapping("/dodaj_skupino/{id_uporabnik}")
+   /* @PostMapping("/dodaj_skupino/{id_uporabnik}")
     public Iterable<Skupina> dodajSkupino(@RequestBody String naziv){
-        return skupinaDao.dodajSkupino(naziv);
+        return skupinaDao.save(naziv);
     }
+    */
 }
