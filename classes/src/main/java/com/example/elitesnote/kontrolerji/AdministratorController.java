@@ -8,9 +8,7 @@ import com.example.elitesnote.razredi.Vsebina;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Optional;
-
 @RestController
 @RequestMapping
 public class AdministratorController {
