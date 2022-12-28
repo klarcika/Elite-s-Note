@@ -12,7 +12,7 @@ public class UporabnikController {
     @Autowired
     private UporabnikRepository uporabnikDao;
 
-    @PostMapping("/uporabnik/dodajUporabnika")
+    @PostMapping("/dodaj_uporabnika")
     public Uporabnik dodajUporabnika(@RequestBody Uporabnik uporabnik){
         return uporabnikDao.save(uporabnik);
     }
@@ -22,7 +22,7 @@ public class UporabnikController {
         return uporabnikDao.findAll();
     }
 
-    @GetMapping("/uporabnik-stSeznamov/{stSeznam}")
+    @GetMapping("/stevilo_seznamov/{stSeznam}")
     public Iterable<Uporabnik> vrniStSeznamovUporabnika(@PathVariable(name = "stSeznam") int stSeznamov){
         return uporabnikDao.vrniStSeznamovUporabnika();
     }

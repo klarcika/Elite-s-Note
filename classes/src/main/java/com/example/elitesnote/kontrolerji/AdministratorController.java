@@ -21,23 +21,19 @@ public class AdministratorController {
         return adminDao.save(adminIme);
     }
 
- /*   @PutMapping("/admin-update/{id}")
+    /*@PutMapping("/admin-update/{id}")
     public ResponseEntity<Skupina> updateAdmin(@PathVariable long id, @RequestBody Administrator administrator) {
-            Administrator a= administrator.getId();
+        Administrator a= administrator.getId();
 
         a.setId(administrator.getId());
         a.setAdminIme(administrator.getAdminIme());
 
-
         return ResponseEntity.ok(updateAdmin);
     }
-
   */
 
     @GetMapping("/administratorji")
     public Iterable<Administrator> getAdminIme(){
         return adminDao.findAll();
     }
-
-
 }

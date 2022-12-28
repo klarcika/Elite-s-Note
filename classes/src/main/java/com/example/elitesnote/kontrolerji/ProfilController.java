@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping
+@RequestMapping("/profil")
 public class ProfilController {
 
     @Autowired
     private ProfilRepository profilDao;
 
-    @GetMapping("/profil/{id}")
+    @GetMapping("/id/{id}")
     public Optional<Profil> vrniProfil(@PathVariable(name = "id") Long id){
         return profilDao.findById(id);
     }
 
-    @PutMapping("/profil/{id}")
+    @PutMapping("/spremeni/id/{id}")
     public ResponseEntity<Profil> spremeniProfil(@PathVariable(name = "id") Long id, @RequestBody Profil podrobnosti){
         Optional<Profil> profil = profilDao.findById(id);
 

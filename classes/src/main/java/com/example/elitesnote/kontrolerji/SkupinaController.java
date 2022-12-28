@@ -27,17 +27,17 @@ public class SkupinaController {
         return skupinaDao.vrniSkupino(id);
     }
 
-    @PostMapping("/administrator")
+    @PostMapping("/dodaj")
     public Skupina setNaziv(@RequestBody Skupina naziv) {
         return skupinaDao.save(naziv);
     }
-    @PostMapping("/dodajUporabnika/{id_uporabnik}") //S1
+    @PostMapping("/dodaj_uporabnika/{id_uporabnik}") //S1
     public Iterable<Skupina> dodajUporabnika(@RequestBody Uporabnik uporabnik, @PathVariable(name = "id_uporabnik") Long id){
     return skupinaDao.dodajUporabnika(uporabnik,id);
     }
 
 
-    @DeleteMapping("/{id}") //S1
+    @DeleteMapping("/izbrisi/{id}") //S1
     public ResponseEntity<String> izbrisiSkupino(@PathVariable(name = "id") Long id){
         Optional<Skupina> skupina = skupinaDao.findById(id);
 
@@ -46,13 +46,13 @@ public class SkupinaController {
         return ResponseEntity.ok("izbrisano");
     }
 
-    @GetMapping("/stUporabnikov-skupina/{stUporabnikov}")
+    @GetMapping("/stevilo_uporabnikov/{stUporabnikov}")
     public Iterable<Uporabnik> vrniSkupinoPoStUporabnikov(@PathVariable(name = "stUporabnikov") int stUporabnikov){
         return skupinaDao.vrniSkupinoPoStUporabnikov(stUporabnikov);
     }
 
 
-    @PostMapping("/dodajSkupino/{id_uporabnik}")
+    @PostMapping("/dodaj_skupino/{id_uporabnik}")
     public Iterable<Skupina> dodajSkupino(@RequestBody String naziv){
         return skupinaDao.dodajSkupino(naziv);
     }
