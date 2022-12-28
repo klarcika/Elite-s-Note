@@ -9,19 +9,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping
+@RequestMapping("/vsebine")
 public class VsebinaController {
 
     @Autowired
     private VsebinaRepository vsebinaDao;
 
-    @GetMapping("/vsebine")
+    @GetMapping
     public Iterable<Vsebina> vrniVsebine(){
         return vsebinaDao.findAll();
     }
 
-	@GetMapping("/seznam_vsebine") //admin
-	public Iterable<Vsebina> metodaSeznamVsebine(@PathVariable(name= "naslov") String naslov){
+    @GetMapping("/zanr/{zanr}/{naslov}")
+    public Iterable<Vsebina> vsebinaZanr(@PathVariable("zanr") String zanr, @PathVariable("naslov") String naslov){
+        return vsebinaDao.vsebinePoZanru(zanr, naslov);
+    }
+
+	@GetMapping("/administrator") //admin
+	public Iterable<Vsebina> metodaSeznamVsebine(@PathVariable(name = "naslov") String naslov){
 		return vsebinaDao.seznamVsebine(naslov);
 	}
 }

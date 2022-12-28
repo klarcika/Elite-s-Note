@@ -30,13 +30,18 @@ public class UporabnikController {
         return uporabnikDao.vrniStSeznamovUporabnika();
     }
 
+    @GetMapping("/s_seznami_in_skupinami/{ime}/{stSeznamov}/{stSkupin}")
+    public Iterable<Uporabnik> uporabnikiSSeznamiInSkupinami(@PathVariable("ime") String ime, @PathVariable("stSeznamov") int stSeznamov,
+                                                             @PathVariable("stSkupin") int stSkupin){
+        return uporabnikDao.seznamiInSkupine(ime, stSeznamov, stSkupin);
+    }
+
     @PutMapping("/profil_spremeni/id/{id}")
     public ResponseEntity<Uporabnik> spremeniProfil(@PathVariable(name = "id") Long id, @RequestBody Uporabnik podrobnosti){
         Optional<Uporabnik> profil = uporabnikDao.findById(id);
 
         Uporabnik pr = profil.get();
-        pr.setGeslo(podrobnosti.getGeslo());
-        pr.setUporabniskoIme(podrobnosti.getUporabniskoIme());
+        pr = podrobnosti;
 
         uporabnikDao.save(pr);
 

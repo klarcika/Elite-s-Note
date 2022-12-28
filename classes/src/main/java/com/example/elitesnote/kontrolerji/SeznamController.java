@@ -32,9 +32,9 @@ public class SeznamController {
         return seznamDao.uporabnikoviSeznami(id);
     }
 
-    @GetMapping("/uporabnik_in_vsebina/{uporabnikovId}&{naslovVsebine}")
-    public Vsebina vsebinaIzSeznama(@PathVariable(name = "id") Long id, @RequestBody String naslov){
-        return seznamDao.vsebinaIzUporSeznama(id, naslov);
+    @GetMapping("/uporabnik/vsebine/{uporabnikovId}/{naslovVsebine}/{zanrVsebine}")
+    public Vsebina vsebinaIzSeznama(@PathVariable("id") Long id, @PathVariable("naslov") String naslov, @PathVariable("zanr") String zanr){
+        return seznamDao.vsebinaIzUporSeznama(id, naslov, zanr);
     }
 
     @DeleteMapping("/id/{id}")

@@ -9,7 +9,7 @@ import PageNotFound from "../PageNotFound/PageNotFound";
 export default function Routing(){
     return(
         <Routes>
-             <Route path="/" element={<Vsebina />} />
+            <Route path="/" element={<Vsebina />} />
             <Route path="/skupina" element={<Skupina />} />
             <Route path="*" element={<PageNotFound />}/>
         </Routes>
