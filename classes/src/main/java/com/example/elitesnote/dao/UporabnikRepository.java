@@ -31,7 +31,8 @@ public interface UporabnikRepository extends CrudRepository<Uporabnik, Long> {
 
     @Query("select u from Uporabnik u where u.uporabniskoIme = ?1 and u.stSeznamov > 0 and u.stSkupin > 0")
     List<Uporabnik> seznamiInSkupine(String ime, int stSeznamov,  int stSkupin);
+
     //2. sprint
-    @Query("select u from Uporabnik u inner join Seznam s ON uporabnik.id =  seznam.id where s.imeSeznama like 'A%' ")
-    Uporabnik vrniUporabnika();
+    //@Query("select u from Uporabnik u inner join Seznam s ON uporabnik.id =  seznam.id where s.imeSeznama like 'A%' ")
+  //  Uporabnik vrniUporabnika();
 }
