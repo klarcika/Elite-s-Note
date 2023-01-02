@@ -1,5 +1,6 @@
 package com.example.elitesnote.dao;
 
+import com.example.elitesnote.razredi.Administrator;
 import com.example.elitesnote.razredi.Seznam;
 import com.example.elitesnote.razredi.Uporabnik;
 import com.example.elitesnote.razredi.Vsebina;
@@ -20,4 +21,10 @@ public interface SeznamRepository extends CrudRepository<Seznam, Long> {
     Vsebina vsebinaIzUporSeznama(Long id, String naslov, String zanr);
     @Query("select v from Vsebina v, Seznam s, Uporabnik u where v.seznam = s and s.uporabnik = u and u.id = ?1 and v.naslov = ?2")
     Vsebina vsebinaIzUporSeznama(Long id, String naslov);
+
+
+    // 2 sprint
+    @Query(value = "SELECT * FROM razredi.Seznam s INNER JOIN razredi.Uporabnik u  ON s.uporabnik=uporabnik.id HAVING  ime_seznama='% seznam%' ", nativeQuery = true)
+    List<Seznam> seznami(String naziv);
+
 }

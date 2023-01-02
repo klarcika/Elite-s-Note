@@ -1,4 +1,5 @@
 package com.example.elitesnote.dao;
+import com.example.elitesnote.razredi.Administrator;
 import com.example.elitesnote.razredi.Uporabnik;
 import com.example.elitesnote.razredi.Skupina;
 import com.example.elitesnote.razredi.Vsebina;
@@ -18,8 +19,6 @@ public interface SkupinaRepository extends CrudRepository<Skupina, Long> {
     @Query("select s from Skupina s where s.naziv = ?1 and s.stUporabnikov > 3 ")
     List<Skupina> vrniDolocenoSkupino(String naziv, int stUporabnikov);
 
-    @Query("select s from Skupina s where s.naziv = ?1 and s.stUporabnikov > 3 ")
-    List<Skupina> vrniDolocenoSkupino4(String naziv, int stUporabnikov);
 
     @Query("select s from Skupina s where s.naziv = ?1 and s.stUporabnikov > 3 and s.stUporabnikov <25")
     List<Skupina> vrniDolocenoSkupino2(String naziv, int stUporabnikov);
@@ -28,9 +27,5 @@ public interface SkupinaRepository extends CrudRepository<Skupina, Long> {
     List<Skupina> vrniDolocenoSkupino3(String naziv, int stUporabnikov);
 
 
-    //  @Query(value="SELECT * FROM Skupina s WHERE s.naziv=:naziv AND s.stUporabnikov=3 ", nativeQuery=true)
-   // List<Skupina> vrniDolocenoSkupino(String naziv, int stUporabnikov);
- //   @Query(value = "SELECT * FROM Skupina s INNER JOIN taksi_sluzba ts ON t.sluzba_id=ts.id HAVING naziv=:naziv", nativeQuery = true)
-   // List<Taksi> vrniTaksijeOdSluzbe(String naziv);
 
 }

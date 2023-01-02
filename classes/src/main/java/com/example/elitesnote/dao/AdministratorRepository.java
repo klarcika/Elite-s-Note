@@ -21,4 +21,5 @@ public interface AdministratorRepository extends CrudRepository<Administrator, L
     List<Administrator> vrniDolocenegaAdmina2(String adminIme, String geslo);
 
 
+
 }

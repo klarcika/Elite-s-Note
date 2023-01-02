@@ -52,4 +52,10 @@ public class SeznamController {
 
 
     }
+
+    //2. sprint
+    @GetMapping("/seznami/{naziv}")
+    public Iterable<Seznam> seznami(@PathVariable(name = "naziv") String naziv){
+        return seznamDao.seznami(naziv);
+    }
 }
