@@ -33,6 +33,5 @@ public interface UporabnikRepository extends CrudRepository<Uporabnik, Long> {
     List<Uporabnik> seznamiInSkupine(String ime, int stSeznamov,  int stSkupin);
 
     //2. sprint
-    //@Query("select u from Uporabnik u inner join Seznam s ON uporabnik.id =  seznam.id where s.imeSeznama like 'A%' ")
-  //  Uporabnik vrniUporabnika();
+   
 }
