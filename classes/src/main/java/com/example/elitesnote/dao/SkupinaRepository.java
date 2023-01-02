@@ -13,10 +13,12 @@ public interface SkupinaRepository extends CrudRepository<Skupina, Long> {
 
     @Query("select s from Skupina s where s.id=?1") //vrne skupino ki ima določen id
     List<Skupina> vrniSkupino(Long id);
-/*
-    @Query("select s from Skupina s, Uporabnik u where u.skupina = s and s.stUporabnikov >= ?1")
+
+
+    @Query( value= "select s from Skupina s, Uporabnik u where u.skupina = s and s.stUporabnikov >= ?1")
     List<Uporabnik> vrniSkupinoPoStUporabnikov(int stUporabnikov);
 
-zaradi typota sem mogla se 1x vse to napisat
- */
+ //   @Query(value = "SELECT * FROM Skupina s INNER JOIN taksi_sluzba ts ON t.sluzba_id=ts.id HAVING naziv=:naziv", nativeQuery = true)
+   // List<Taksi> vrniTaksijeOdSluzbe(String naziv);
+
 }
