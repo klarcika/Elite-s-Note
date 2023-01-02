@@ -27,4 +27,5 @@ public interface SeznamRepository extends CrudRepository<Seznam, Long> {
     @Query(value = "SELECT * FROM razredi.Seznam s INNER JOIN razredi.Uporabnik u  ON s.uporabnik=uporabnik.id HAVING  ime_seznama='% seznam%' ", nativeQuery = true)
     List<Seznam> seznami(String naziv);
 
+
 }

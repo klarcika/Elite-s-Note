@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 @RestController
 @RequestMapping("/skupina")
@@ -55,18 +56,10 @@ public class SkupinaController {
         return skupinaDao.vrniDolocenoSkupino(naziv, stUporabnikov);
     }
 
+//3. sprint
+@GetMapping("/ime/{ime}")
+public List vrniSkupinoInUporabnike(@PathVariable(name = "ime") String ime){
+    return skupinaDao.vrniSkupinoInUporabnike(ime);
+}
 
-
-
-  /*
- @GetMapping("/stevilo_uporabnikov/{stUporabnikov}")
-    public Iterable<Uporabnik> vrniSkupinoPoStUporabnikov(@PathVariable(name = "stUporabnikov") int stUporabnikov){
-        return skupinaDao.vrniSkupinoPoStUporabnikov(stUporabnikov);
-    }
-
-   @PostMapping("/dodaj_skupino/{id_uporabnik}")
-    public Iterable<Skupina> dodajSkupino(@RequestBody String naziv){
-        return skupinaDao.save(naziv);
-    }
-    */
 }

@@ -2,10 +2,16 @@ package com.example.elitesnote.kontrolerji;
 
 import com.example.elitesnote.dao.UporabnikRepository;
 import com.example.elitesnote.razredi.Uporabnik;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -46,5 +52,59 @@ public class UporabnikController {
         uporabnikDao.save(pr);
 
         return ResponseEntity.ok(pr);
+    }
+
+
+
+    // registracija
+    @PostMapping("/registracija")
+    public boolean registracijaUporabnika(@RequestBody Uporabnik uporabnik) throws NoSuchAlgorithmException {
+        List<Uporabnik> tempUporabnik = uporabnikDao.preveriCeUporabnikObstaja(uporabnik.getUporabniskoIme());
+        if(tempUporabnik.size() > 0){
+            // uporabnik že obstaja
+            return false;
+        }
+        String geslo = uporabnik.getGeslo();
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        md.update(geslo.getBytes(StandardCharsets.UTF_8));
+        byte[] digest = md.digest();
+
+        String hex = String.format("%064x", new BigInteger(1, digest));
+        uporabnik.setGeslo(hex);
+        System.out.println(uporabnik.getGeslo());
+        uporabnikDao.save(uporabnik);
+        System.out.println("Registracija uspešna");
+        return true;
+    }
+
+    // prijava
+    @PostMapping("/prijava")
+    public boolean vrniLogin(@RequestBody ObjectNode objectNode) throws NoSuchAlgorithmException {
+        System.out.println(objectNode);
+
+        String geslo = objectNode.get("geslo").asText();
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        md.update(geslo.getBytes(StandardCharsets.UTF_8));
+        byte[] digest = md.digest();
+        String hex = String.format("%064x", new BigInteger(1, digest));
+
+        List<Uporabnik> tempUporabnik = uporabnikDao.vrniLogin(hex, objectNode.get("email").asText());
+        System.out.println(tempUporabnik);
+        if(tempUporabnik.size() > 0){
+            System.out.println("Prijava uspešna");
+            return true;
+        }
+        return false;
+    }
+    private static String bytesToHex(byte[] hash) {
+        StringBuilder hexString = new StringBuilder(2 * hash.length);
+        for (int i = 0; i < hash.length; i++) {
+            String hex = Integer.toHexString(0xff & hash[i]);
+            if(hex.length() == 1) {
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+        return hexString.toString();
     }
 }

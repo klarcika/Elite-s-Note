@@ -26,6 +26,11 @@ public interface SkupinaRepository extends CrudRepository<Skupina, Long> {
     @Query("select s from Skupina s where s.naziv ='skupina' and s.stUporabnikov > 3 and s.stUporabnikov <5")
     List<Skupina> vrniDolocenoSkupino3(String naziv, int stUporabnikov);
 
+    //3.sprint
+    @Query(value = "SELECT s.naziv, u.uporabniskoIme FROM Skupina s INNER JOIN skupina_uporabnik su ON s.id=su.skupina_id INNER JOIN Uporabnik u ON su.uporabnik_id=u.id WHERE u.stSkupin < 4", nativeQuery = true)
+    List vrniSkupinoInUporabnike(String ime);
 
+    @Query(value = "SELECT s.naziv, u.uporabniskoIme, u.stSkupin Skupina s INNER JOIN skupina_uporabnik su ON s.id=su.skupina_id INNER JOIN Uporabnik u ON su.uporabnik_id=u.id WHERE s.stUporabnikov < 4", nativeQuery = true)
+    List vrniSkupinoInUporabnike2(String ime);
 
 }
