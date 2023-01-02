@@ -32,7 +32,5 @@ public interface UporabnikRepository extends CrudRepository<Uporabnik, Long> {
     @Query("select u from Uporabnik u where u.uporabniskoIme = ?1 and u.stSeznamov > 0 and u.stSkupin > 0")
     List<Uporabnik> seznamiInSkupine(String ime, int stSeznamov,  int stSkupin);
 
-    //2. sprint
-    @Query(value = "SELECT ts.id, ts.naziv, t.id, t.registrska_stevilka FROM taksi t INNER JOIN taksi_sluzba ts ON t.sluzba_id=ts.id INNER JOIN taksist tak ON tak.sluzba_id=ts.id WHERE tak.ime=:ime", nativeQuery = true)
-    List vrniTaksijeInSluzbe(String ime);
+
 }
