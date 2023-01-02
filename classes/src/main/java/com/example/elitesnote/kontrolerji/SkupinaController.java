@@ -23,12 +23,11 @@ public class SkupinaController {
        return skupinaDao.findAll();
    }
 
-  /*  @GetMapping("/skupina-id/{id}")
+   @GetMapping("/skupina-id/{id}")
     public Iterable<Skupina> vrniSkupino(@PathVariable(name = "naziv") Long id){
         return skupinaDao.vrniSkupino(id);
     }
 
-   */
     @PostMapping("/dodajSkupino")
     public Skupina dodajSkupino(@RequestBody Skupina skupina) {
         return skupinaDao.save(skupina);

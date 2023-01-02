@@ -8,15 +8,12 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface SkupinaRepository extends CrudRepository<Skupina, Long> {
-    /*@Query("select s from Skupina s")
-        //vrne vse skupine?
+    @Query("SELECT s FROM Skupina s")
     List<Skupina> vrniSkupine();
 
-     */
-/*
     @Query("select s from Skupina s where s.id=?1") //vrne skupino ki ima določen id
     List<Skupina> vrniSkupino(Long id);
-
+/*
     @Query("select s from Skupina s, Uporabnik u where u.skupina = s and s.stUporabnikov >= ?1")
     List<Uporabnik> vrniSkupinoPoStUporabnikov(int stUporabnikov);
 
