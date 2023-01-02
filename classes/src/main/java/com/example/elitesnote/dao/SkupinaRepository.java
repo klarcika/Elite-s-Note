@@ -18,6 +18,9 @@ public interface SkupinaRepository extends CrudRepository<Skupina, Long> {
     @Query("select s from Skupina s where s.naziv = ?1 and s.stUporabnikov > 3 ")
     List<Skupina> vrniDolocenoSkupino(String naziv, int stUporabnikov);
 
+    @Query("select s from Skupina s where s.naziv = ?1 and s.stUporabnikov > 3 ")
+    List<Skupina> vrniDolocenoSkupino4(String naziv, int stUporabnikov);
+
     @Query("select s from Skupina s where s.naziv = ?1 and s.stUporabnikov > 3 and s.stUporabnikov <25")
     List<Skupina> vrniDolocenoSkupino2(String naziv, int stUporabnikov);
 
