@@ -17,5 +17,6 @@ public interface SkupinaRepository extends CrudRepository<Skupina, Long> {
     @Query("select s from Skupina s, Uporabnik u where u.skupina = s and s.stUporabnikov >= ?1")
     List<Uporabnik> vrniSkupinoPoStUporabnikov(int stUporabnikov);
 
+zaradi typota sem mogla se 1x vse to napisat
  */
 }
