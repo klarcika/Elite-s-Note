@@ -50,11 +50,22 @@ public class SkupinaController {
         skupinaDao.delete(skup);
         return ResponseEntity.ok("izbrisano");
     }
+    @GetMapping("/naziv/{naziv}/stUporabnikov/{stUporabnikov}")
+    public Iterable<Skupina> vrniDolocenoSkupino(@PathVariable(name = "naziv") String naziv, @PathVariable(name = "stUporabnikov") int stUporabnikov ){
+        return skupinaDao.vrniDolocenoSkupino(naziv, stUporabnikov);
+    }
 
- /*   @GetMapping("/stevilo_uporabnikov/{stUporabnikov}")
+
+
+
+  /*
+ @GetMapping("/stevilo_uporabnikov/{stUporabnikov}")
     public Iterable<Uporabnik> vrniSkupinoPoStUporabnikov(@PathVariable(name = "stUporabnikov") int stUporabnikov){
         return skupinaDao.vrniSkupinoPoStUporabnikov(stUporabnikov);
     }
+ /*
+
+
 
    @PostMapping("/dodaj_skupino/{id_uporabnik}")
     public Iterable<Skupina> dodajSkupino(@RequestBody String naziv){

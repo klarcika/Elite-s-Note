@@ -17,4 +17,8 @@ public interface AdministratorRepository extends CrudRepository<Administrator, L
     @Query("select a from Administrator a")
     List<Administrator> vrniAdmin();
 
+    @Query("select a from Administrator a where a.adminIme= ?1  and a.geslo= ?2 ")
+    List<Skupina> vrniDolocenegaAdmina(String adminIme, String geslo);
+
+  //  @Query(value="SELECT * FROM uporabnik u WHERE u.ime=:ime AND u.geslo=:geslo ", nativeQuery=true)
 }

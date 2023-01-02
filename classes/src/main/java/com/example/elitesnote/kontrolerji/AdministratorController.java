@@ -22,7 +22,7 @@ public class AdministratorController {
         return adminDao.findAll();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/id/{id}")
     public Optional<Administrator> vrniAdmina(@PathVariable(name="id") Long id) {
         return adminDao.findById(id);
     }
