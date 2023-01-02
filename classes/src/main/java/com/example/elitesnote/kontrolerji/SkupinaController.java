@@ -63,7 +63,7 @@ public class SkupinaController {
     public Iterable<Uporabnik> vrniSkupinoPoStUporabnikov(@PathVariable(name = "stUporabnikov") int stUporabnikov){
         return skupinaDao.vrniSkupinoPoStUporabnikov(stUporabnikov);
     }
- 
+
    @PostMapping("/dodaj_skupino/{id_uporabnik}")
     public Iterable<Skupina> dodajSkupino(@RequestBody String naziv){
         return skupinaDao.save(naziv);
