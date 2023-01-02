@@ -33,5 +33,5 @@ public interface UporabnikRepository extends CrudRepository<Uporabnik, Long> {
     List<Uporabnik> seznamiInSkupine(String ime, int stSeznamov,  int stSkupin);
 
     //2. sprint
-   
+
 }
