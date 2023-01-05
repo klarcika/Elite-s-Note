@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 @RestController
-@RequestMapping
+@RequestMapping("/administrator")
 public class AdministratorController {
 
     @Autowired
@@ -22,7 +22,7 @@ public class AdministratorController {
         return adminDao.findAll();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/id/{id}")
     public Optional<Administrator> vrniAdmina(@PathVariable(name="id") Long id) {
         return adminDao.findById(id);
     }
@@ -51,11 +51,6 @@ public class AdministratorController {
         return true;
     }
 
-    /*@PostMapping("/administrator")
-    public Administrator setAdminIme(@RequestBody Administrator adminIme) {
-        return adminDao.save(adminIme);
-    }
-     */
 
 
 

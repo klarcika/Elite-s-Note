@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 @RestController
 @RequestMapping("/skupina")
@@ -23,21 +24,26 @@ public class SkupinaController {
        return skupinaDao.findAll();
    }
 
-    @GetMapping("/skupina-id/{id}")
+   @GetMapping("/skupina-id/{id}")
     public Iterable<Skupina> vrniSkupino(@PathVariable(name = "naziv") Long id){
         return skupinaDao.vrniSkupino(id);
     }
 
-    @PostMapping("/dodaj")
-    public Skupina setNaziv(@RequestBody Skupina naziv) {
-        return skupinaDao.save(naziv);
-    }
     @PostMapping("/dodajSkupino")
     public Skupina dodajSkupino(@RequestBody Skupina skupina) {
         return skupinaDao.save(skupina);
     }
 
-    @DeleteMapping("/izbrisi/{id}") //S1
+    @PutMapping("/spremeni/{id}")
+    public Skupina spremeniSkupino(@PathVariable(name="id") Long id, @RequestBody Skupina skupina) {
+
+        if (!skupinaDao.existsById(id))
+            return null;
+
+        skupina.setId(id);
+        return skupinaDao.save(skupina);
+    }
+    @DeleteMapping("/izbrisi/{id}")
     public ResponseEntity<String> izbrisiSkupino(@PathVariable(name = "id") Long id){
         Optional<Skupina> skupina = skupinaDao.findById(id);
 
@@ -45,15 +51,15 @@ public class SkupinaController {
         skupinaDao.delete(skup);
         return ResponseEntity.ok("izbrisano");
     }
-
-    @GetMapping("/stevilo_uporabnikov/{stUporabnikov}")
-    public Iterable<Skupina> vrniSkupinoPoStUporabnikov(@PathVariable(name = "stUporabnikov") int stUporabnikov){
-        return skupinaDao.vrniSkupinoPoStUporabnikov(stUporabnikov);
+    @GetMapping("/naziv/{naziv}/stUporabnikov/{stUporabnikov}")
+    public Iterable<Skupina> vrniDolocenoSkupino(@PathVariable(name = "naziv") String naziv, @PathVariable(name = "stUporabnikov") int stUporabnikov ){
+        return skupinaDao.vrniDolocenoSkupino(naziv, stUporabnikov);
     }
 
-   /* @PostMapping("/dodaj_skupino/{id_uporabnik}")
-    public Iterable<Skupina> dodajSkupino(@RequestBody String naziv){
-        return skupinaDao.save(naziv);
-    }
-    */
+//3. sprint
+@GetMapping("/ime/{ime}")
+public List vrniSkupinoInUporabnike(@PathVariable(name = "ime") String ime){
+    return skupinaDao.vrniSkupinoInUporabnike(ime);
+}
+
 }

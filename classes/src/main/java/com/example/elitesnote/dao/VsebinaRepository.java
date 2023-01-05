@@ -12,4 +12,9 @@ public interface VsebinaRepository extends CrudRepository<Vsebina, Long> {
 
     @Query("select v from Vsebina v, Administrator a where v.administrator = a  ")
     List<Vsebina> seznamVsebine(String naslov);
+
+
+    // 2 sprint
+    @Query(value = "SELECT * FROM razredi.Vsebina v INNER JOIN razredi.Administrator a  ON v.administrator_id=administrator.id HAVING  naslov ='%a%' ", nativeQuery = true)
+    List<Vsebina> vsebina(String naslov);
 }
