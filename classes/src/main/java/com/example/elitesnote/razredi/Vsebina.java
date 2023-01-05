@@ -100,4 +100,27 @@ Vsebina {
 		throw new UnsupportedOperationException();
 	}
 
+	public String getZanr() {
+		return zanr;
+	}
+
+	public void setZanr(String zanr) {
+		this.zanr = zanr;
+	}
+
+	public Administrator getAdministrator() {
+		return administrator;
+	}
+
+	public void setAdministrator(Administrator administrator) {
+		this.administrator = administrator;
+	}
+
+	public Seznam getSeznam() {
+		return seznam;
+	}
+
+	public void setSeznam(Seznam seznam) {
+		this.seznam = seznam;
+	}
 }

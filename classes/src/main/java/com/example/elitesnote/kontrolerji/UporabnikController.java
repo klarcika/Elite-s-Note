@@ -26,7 +26,7 @@ public class UporabnikController {
         return uporabnikDao.save(uporabnik);
     }
 
-    @GetMapping
+    @GetMapping("/vsiUporabniki")
     public Iterable<Uporabnik> vrniUporabnika(){
         return uporabnikDao.findAll();
     }
@@ -53,8 +53,6 @@ public class UporabnikController {
 
         return ResponseEntity.ok(pr);
     }
-
-
 
     // registracija
     @PostMapping("/registracija")

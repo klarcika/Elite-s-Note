@@ -42,6 +42,12 @@ public class SeznamController {
         return seznamDao.vsebinaIzUporSeznama(id, naslov);
     }
 
+    @PostMapping("/dodajSeznam")
+    public boolean dodajSeznam(@RequestBody Seznam seznam){
+        seznamDao.save(seznam);
+        return true;
+    }
+
     @DeleteMapping("/id/{id}")
     public ResponseEntity<String> izbrisiSeznam(@PathVariable(name = "id") Long id) {
         Optional<Seznam> seznam = seznamDao.findById(id);
@@ -54,7 +60,7 @@ public class SeznamController {
     }
 
     //2. sprint
-    @GetMapping("/seznami/{naziv}")
+    @GetMapping("/{naziv}")
     public Iterable<Seznam> seznami(@PathVariable(name = "naziv") String naziv){
         return seznamDao.seznami(naziv);
     }

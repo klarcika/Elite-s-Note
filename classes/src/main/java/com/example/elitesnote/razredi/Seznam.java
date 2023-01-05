@@ -48,7 +48,7 @@ public class Seznam {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param naslovVsebine
 	 */
 	public void izbrisiVsebino(String naslovVsebine) {
@@ -57,7 +57,7 @@ public class Seznam {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param naziv
 	 */
 	public void dodajSeznam(String naziv) {
@@ -65,4 +65,11 @@ public class Seznam {
 		throw new UnsupportedOperationException();
 	}
 
+	public Collection<Vsebina> getVsebine() {
+		return vsebine;
+	}
+
+	public void setVsebine(Collection<Vsebina> vsebine) {
+		this.vsebine = vsebine;
+	}
 }
