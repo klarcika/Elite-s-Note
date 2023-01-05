@@ -44,8 +44,6 @@ public class SeznamController {
         Seznam sez = seznam.get();
         seznamDao.delete(sez);
         return ResponseEntity.ok("izbrisano");
-
-
     }
 
     //2. sprint
