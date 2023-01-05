@@ -13,12 +13,12 @@ public class VsebinaController {
     @Autowired
     private VsebinaRepository vsebinaDao;
 
-    @GetMapping
+    @GetMapping("/vseVsebine")
     public Iterable<Vsebina> vrniVsebine(){
         return vsebinaDao.findAll();
     }
 
-    @GetMapping("/zanr/{zanr}/{naslov}")
+    @GetMapping("/{zanr}/{naslov}")
     public Iterable<Vsebina> vsebinaZanr(@PathVariable("zanr") String zanr, @PathVariable("naslov") String naslov){
         return vsebinaDao.vsebinePoZanru(zanr, naslov);
     }
@@ -32,5 +32,10 @@ public class VsebinaController {
     public boolean dodajVsebino(@RequestBody Vsebina vsebina){
         vsebinaDao.save(vsebina);
         return true;
+    }
+
+    @GetMapping("/naslov_in_zanr/{id}/{naslov}/{zanr}")
+    public Vsebina vsebinaIzSeznama(@PathVariable("id") Long id, @PathVariable("naslov") String naslov, @PathVariable("zanr") String zanr) {
+        return vsebinaDao.vsebinaNaslovZanr(id, naslov, zanr);
     }
 }

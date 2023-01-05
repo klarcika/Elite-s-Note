@@ -10,11 +10,11 @@ import java.util.List;
 public interface UporabnikRepository extends CrudRepository<Uporabnik, Long> {
 
 
-    @Query("select u from Uporabnik u where u.stSeznamov > ?1")
+    @Query("SELECT u FROM Uporabnik u WHERE u.stSeznamov > ?1")
     List<Uporabnik> vrniStSeznamovUporabnika();
     //uporabnik ki ima več kot 3 sezname
 
-    @Query("select u from Uporabnik u where u.uporabniskoIme = ?1 and u.stSeznamov > 0 and u.stSkupin > 0")
+    @Query("SELECT u FROM Uporabnik u WHERE u.uporabniskoIme = ?1 and u.stSeznamov >= 0 and u.stSkupin >= 0")
     List<Uporabnik> seznamiInSkupine(String ime, int stSeznamov,  int stSkupin);
 
 

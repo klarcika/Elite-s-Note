@@ -30,6 +30,7 @@ public class Uporabnik {
 	private String uporabniskoIme;
 	private String geslo;
 
+	private int stSeznamov;
 	public int getStSeznamov() {
 		return stSeznamov;
 	}
@@ -38,8 +39,7 @@ public class Uporabnik {
 		this.stSeznamov = stSeznamov;
 	}
 
-	private int stSeznamov;
-
+	private int stSkupin;
 	public int getStSkupin() {
 		return stSkupin;
 	}
@@ -47,8 +47,6 @@ public class Uporabnik {
 	public void setStSkupin(int stSkupin) {
 		this.stSkupin = stSkupin;
 	}
-
-	private int stSkupin;
 
 	public Uporabnik() {
 	}

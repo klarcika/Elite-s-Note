@@ -47,6 +47,7 @@ public class UporabnikController {
         Optional<Uporabnik> profil = uporabnikDao.findById(id);
 
         Uporabnik pr = profil.get();
+        uporabnikDao.delete(pr);
         pr = podrobnosti;
 
         uporabnikDao.save(pr);
