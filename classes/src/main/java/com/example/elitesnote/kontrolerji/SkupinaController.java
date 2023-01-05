@@ -47,7 +47,7 @@ public class SkupinaController {
     }
 
     @GetMapping("/stevilo_uporabnikov/{stUporabnikov}")
-    public Iterable<Uporabnik> vrniSkupinoPoStUporabnikov(@PathVariable(name = "stUporabnikov") int stUporabnikov){
+    public Iterable<Skupina> vrniSkupinoPoStUporabnikov(@PathVariable(name = "stUporabnikov") int stUporabnikov){
         return skupinaDao.vrniSkupinoPoStUporabnikov(stUporabnikov);
     }
 
