@@ -7,14 +7,21 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface VsebinaRepository extends CrudRepository<Vsebina, Long> {
+
+    // Sprint 1; poizvedba z 2 parametroma
     @Query("SELECT v FROM Vsebina v WHERE v.zanr = ?1 and v.naslov = ?2")
     List<Vsebina> vsebinePoZanru(String zanr, String naslov);
 
     @Query("SELECT v FROM Vsebina v, Administrator a WHERE v.administrator = a")
     List<Vsebina> seznamVsebine(String naslov);
 
+    // Projekt/Sprint 1; poizvedba s 3 parametri
     @Query("SELECT v FROM Vsebina v WHERE v.id = ?1 and v.naslov = ?2 and v.zanr = ?3")
     Vsebina vsebinaNaslovZanr(Long id, String naslov, String zanr);
+
+    // Sprint 2; poizvedba z 2 modeloma
+    @Query(value = "SELECT v.* FROM Vsebina v INNER JOIN Seznam s ON v.seznam_id = s.id WHERE ime_seznama = ?1", nativeQuery = true)
+    List<Vsebina> vsebineIzSeznama(String ime);
 
     // 2 sprint
     @Query(value = "SELECT * FROM razredi.Vsebina v INNER JOIN razredi.Administrator a  ON v.administrator_id=administrator.id HAVING  naslov ='%a%' ", nativeQuery = true)

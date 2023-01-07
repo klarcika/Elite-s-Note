@@ -2,6 +2,7 @@ package com.example.elitesnote.dao;
 import com.example.elitesnote.razredi.Skupina;
 import com.example.elitesnote.razredi.Seznam;
 import com.example.elitesnote.razredi.Uporabnik;
+import com.example.elitesnote.razredi.Vsebina;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -14,9 +15,9 @@ public interface UporabnikRepository extends CrudRepository<Uporabnik, Long> {
     List<Uporabnik> vrniStSeznamovUporabnika();
     //uporabnik ki ima več kot 3 sezname
 
+    // Projekt/Sprint 1; poizvedba s 3 parametri
     @Query("SELECT u FROM Uporabnik u WHERE u.uporabniskoIme = ?1 and u.stSeznamov >= 0 and u.stSkupin >= 0")
     List<Uporabnik> seznamiInSkupine(String ime, int stSeznamov,  int stSkupin);
-
 
     // registracija
     @Query("SELECT u FROM Uporabnik u WHERE u.uporabniskoIme = :uporabniskoIme ")

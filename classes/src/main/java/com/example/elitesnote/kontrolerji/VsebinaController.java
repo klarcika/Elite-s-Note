@@ -17,11 +17,13 @@ public class VsebinaController {
     @Autowired
     private VsebinaRepository vsebinaDao;
 
+    // Sprint 1; izpis vseh zapisov
     @GetMapping("/vseVsebine")
     public Iterable<Vsebina> vrniVsebine(){
         return vsebinaDao.findAll();
     }
 
+    // Sprint 1; poizvedba z 2 parametroma
     @GetMapping("/{zanr}/{naslov}")
     public Iterable<Vsebina> vsebinaZanr(@PathVariable("zanr") String zanr, @PathVariable("naslov") String naslov){
         return vsebinaDao.vsebinePoZanru(zanr, naslov);
@@ -32,17 +34,20 @@ public class VsebinaController {
 		return vsebinaDao.seznamVsebine(naslov);
 	}
 
+    // Sprint 2
     @PostMapping("/dodajVsebino")
     public boolean dodajVsebino(@RequestBody Vsebina vsebina){
         vsebinaDao.save(vsebina);
         return true;
     }
 
+    // Projekt/Sprint 1; poizvedba s 3 parametri
     @GetMapping("/naslov_in_zanr/{id}/{naslov}/{zanr}")
     public Vsebina vsebinaIzSeznama(@PathVariable("id") Long id, @PathVariable("naslov") String naslov, @PathVariable("zanr") String zanr) {
         return vsebinaDao.vsebinaNaslovZanr(id, naslov, zanr);
     }
 
+    // Sprint 2
     @DeleteMapping("/id/{id}")
     public ResponseEntity<String> izbrisiVsebino(@PathVariable(name = "id") Long id) {
         Optional<Vsebina> vsebina = vsebinaDao.findById(id);
@@ -52,6 +57,7 @@ public class VsebinaController {
         return ResponseEntity.ok("izbrisano");
     }
 
+    // Sprint 2
     @PutMapping("/spremeni/id/{id}")
     public ResponseEntity<Vsebina> spremeniProfil(@PathVariable(name = "id") Long id, @RequestBody Vsebina podrobnosti){
         Optional<Vsebina> vsebina = vsebinaDao.findById(id);
@@ -63,5 +69,11 @@ public class VsebinaController {
         vsebinaDao.save(vs);
 
         return ResponseEntity.ok(vs);
+    }
+
+    // Sprint 2; poizvedba z 2 modeloma
+    @GetMapping("/seznam/{ime}")
+    public Iterable<Vsebina> vrniVsebineOdSeznama(@PathVariable(name = "ime") String ime){
+        return vsebinaDao.vsebineIzSeznama(ime);
     }
 }

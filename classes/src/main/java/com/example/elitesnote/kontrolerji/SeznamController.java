@@ -21,22 +21,20 @@ public class SeznamController {
         return seznamDao.findAll();
     }
 
+    // Sprint 1; izpis enega zapisa
     @GetMapping("/zanr/{zanr}")
     public Iterable<Seznam> vrniPoZanruVsebin(@PathVariable(name = "zanr") String zanr) {
         return seznamDao.vrniPoZanru(zanr);
     }
 
-    @GetMapping("/uporabnik/{uporabnikovId}")
-    public Iterable<Seznam> vrniUporabnikoveSezname(@PathVariable(name = "id") Long id) {
-        return seznamDao.uporabnikoviSeznami(id);
-    }
-
+    // Sprint 1; dodajanje zapisa
     @PostMapping("/dodajSeznam")
     public boolean dodajSeznam(@RequestBody Seznam seznam){
         seznamDao.save(seznam);
         return true;
     }
 
+    // Sprint 1; brisanje podatkov zapisa
     @DeleteMapping("/id/{id}")
     public ResponseEntity<String> izbrisiSeznam(@PathVariable(name = "id") Long id) {
         Optional<Seznam> seznam = seznamDao.findById(id);
@@ -44,6 +42,12 @@ public class SeznamController {
         Seznam sez = seznam.get();
         seznamDao.delete(sez);
         return ResponseEntity.ok("izbrisano");
+    }
+
+    // Sprint 2; poizvedba z 2 modeloma
+    @GetMapping("/uporabnik/{ime}")
+    public Iterable<Seznam> vrniVsebineOdSeznama(@PathVariable(name = "ime") String ime){
+        return seznamDao.seznamiOdUporabnika(ime);
     }
 
     //2. sprint

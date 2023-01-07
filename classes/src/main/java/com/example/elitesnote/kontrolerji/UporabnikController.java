@@ -26,6 +26,7 @@ public class UporabnikController {
         return uporabnikDao.save(uporabnik);
     }
 
+    // Sprint 2
     @GetMapping("/vsiUporabniki")
     public Iterable<Uporabnik> vrniUporabnika(){
         return uporabnikDao.findAll();
@@ -36,12 +37,14 @@ public class UporabnikController {
         return uporabnikDao.vrniStSeznamovUporabnika();
     }
 
+    // Projekt/Sprint 1; poizvedba s 3 parametri
     @GetMapping("/s_seznami_in_skupinami/{ime}/{stSeznamov}/{stSkupin}")
     public Iterable<Uporabnik> uporabnikiSSeznamiInSkupinami(@PathVariable("ime") String ime, @PathVariable("stSeznamov") int stSeznamov,
                                                              @PathVariable("stSkupin") int stSkupin){
         return uporabnikDao.seznamiInSkupine(ime, stSeznamov, stSkupin);
     }
 
+    // Sprint 1; spreminjanje podatkov zapisa
     @PutMapping("/profil_spremeni/id/{id}")
     public ResponseEntity<Uporabnik> spremeniProfil(@PathVariable(name = "id") Long id, @RequestBody Uporabnik podrobnosti){
         Optional<Uporabnik> profil = uporabnikDao.findById(id);

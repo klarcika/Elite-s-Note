@@ -50,9 +50,4 @@ public class AdministratorController {
         adminDao.deleteById(id);
         return true;
     }
-
-
-
-
-
 }

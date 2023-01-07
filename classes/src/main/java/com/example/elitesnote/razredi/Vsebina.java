@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Entity
-public class
-Vsebina {
+public class Vsebina {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false)
@@ -21,7 +20,7 @@ Vsebina {
 	private Administrator administrator;
 
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="Seznam_id")
+	@JoinColumn(name="seznam_id")
 	@OnDelete( action= OnDeleteAction.CASCADE) // vse se zbrise
 	@JsonIgnore
 	private Seznam seznam;
