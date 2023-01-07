@@ -1,9 +1,5 @@
 package com.example.elitesnote.dao;
-
-import com.example.elitesnote.razredi.Administrator;
 import com.example.elitesnote.razredi.Seznam;
-import com.example.elitesnote.razredi.Uporabnik;
-import com.example.elitesnote.razredi.Vsebina;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -18,8 +14,9 @@ public interface SeznamRepository extends CrudRepository<Seznam, Long> {
     List<Seznam> uporabnikoviSeznami(Long id);
 
     // 2 sprint
-    @Query(value = "SELECT * FROM razredi.Seznam s INNER JOIN razredi.Uporabnik u  ON s.uporabnik=uporabnik.id HAVING  ime_seznama='% seznam%' ", nativeQuery = true)
-    List<Seznam> seznami(String naziv);
+  //  @Query(value = "SELECT * FROM razredi.Seznam s INNER JOIN razredi.Uporabnik u  ON s.uporabnik=u.id HAVING  ime_seznama='% a %' ", nativeQuery = true)
+ //   List<Seznam> seznami(String naziv);
 
-
+    @Query(value = "SELECT * FROM Seznam s INNER JOIN Uporabnik u ON s.uporabnik=u.id HAVING  s.ime_seznama='anime'", nativeQuery = true)
+     List<Seznam> seznami(long id);
 }

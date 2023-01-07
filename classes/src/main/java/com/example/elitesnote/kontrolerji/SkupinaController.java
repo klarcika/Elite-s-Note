@@ -19,7 +19,7 @@ public class SkupinaController {
     private SkupinaRepository skupinaDao;
 
    // 1. sprint
-   @GetMapping
+   @GetMapping("/vseSkupine")
    public Iterable<Skupina> vrniSkupine(){
        return skupinaDao.findAll();
    }
@@ -57,9 +57,9 @@ public class SkupinaController {
     }
 
 //3. sprint
-@GetMapping("/ime/{ime}")
-public List vrniSkupinoInUporabnike(@PathVariable(name = "ime") String ime){
-    return skupinaDao.vrniSkupinoInUporabnike(ime);
+@GetMapping("/imeSkupine/{naziv}")
+public List vrniSkupinoInUporabnike(@PathVariable(name = "naziv") String naziv){
+    return skupinaDao.vrniSkupinoInUporabnike(naziv);
 }
 
 }

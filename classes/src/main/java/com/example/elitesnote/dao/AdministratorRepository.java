@@ -1,8 +1,6 @@
 package com.example.elitesnote.dao;
 
 import com.example.elitesnote.razredi.Administrator;
-import com.example.elitesnote.razredi.Skupina;
-import com.example.elitesnote.razredi.Vsebina;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 

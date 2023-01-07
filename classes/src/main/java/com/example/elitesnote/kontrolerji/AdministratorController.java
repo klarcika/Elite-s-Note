@@ -17,7 +17,7 @@ public class AdministratorController {
     private AdministratorRepository adminDao;
 
     // 2. sprint
-    @GetMapping
+    @GetMapping("/vsiAdmini")
     public Iterable<Administrator> vrniAdmin(){
         return adminDao.findAll();
     }
