@@ -1,5 +1,6 @@
 package com.example.elitesnote.razredi;
 
+import com.example.elitesnote.dao.Vloga;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
@@ -29,6 +30,7 @@ public class Uporabnik {
 
 	private String uporabniskoIme;
 	private String geslo;
+	private Vloga vloga = Vloga.UPORABNIK;
 
 	private int stSeznamov;
 	public int getStSeznamov() {
@@ -46,6 +48,30 @@ public class Uporabnik {
 
 	public void setStSkupin(int stSkupin) {
 		this.stSkupin = stSkupin;
+	}
+
+	public Vloga getVloga() {
+		return vloga;
+	}
+
+	public Collection<Seznam> getSeznami() {
+		return seznami;
+	}
+
+	public Collection<Skupina> getSkupine() {
+		return skupine;
+	}
+
+	public void setSeznami(Collection<Seznam> seznami) {
+		this.seznami = seznami;
+	}
+
+	public void setSkupine(Collection<Skupina> skupine) {
+		this.skupine = skupine;
+	}
+
+	public void setVloga(Vloga vloga) {
+		this.vloga = vloga;
 	}
 
 	public Uporabnik() {

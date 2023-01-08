@@ -1,6 +1,7 @@
 package com.example.elitesnote.razredi;
 
 import com.example.elitesnote.dao.AdministratorRepository;
+import com.example.elitesnote.dao.Vloga;
 import jakarta.persistence.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,7 @@ public class Administrator {
 
 	private String adminIme;
 	private String geslo;
+	private Vloga vloga = Vloga.ADMINISTRATOR;
 
 	public Administrator() {
 	}
@@ -53,6 +55,14 @@ public class Administrator {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Vloga getVloga() {
+		return vloga;
+	}
+
+	public void setVloga(Vloga vloga) {
+		this.vloga = vloga;
 	}
 
 	/**

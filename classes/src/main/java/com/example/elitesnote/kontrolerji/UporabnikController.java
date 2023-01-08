@@ -1,6 +1,8 @@
 package com.example.elitesnote.kontrolerji;
 
 import com.example.elitesnote.dao.UporabnikRepository;
+import com.example.elitesnote.dao.Vloga;
+import com.example.elitesnote.razredi.Administrator;
 import com.example.elitesnote.razredi.Uporabnik;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +58,16 @@ public class UporabnikController {
         uporabnikDao.save(pr);
 
         return ResponseEntity.ok(pr);
+    }
+
+    // Sprint 2; vloga uporabnika
+    @GetMapping("/vloga/{id}")
+    public Vloga vrniUporabnikVlogo(@PathVariable(name = "id") Long id){
+        Vloga vloga = uporabnikDao.findById(id).get().getVloga();
+        if (vloga == null){
+            vloga = Vloga.UPORABNIK;
+        }
+        return vloga;
     }
 
 

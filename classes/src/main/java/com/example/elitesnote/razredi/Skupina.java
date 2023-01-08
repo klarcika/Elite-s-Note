@@ -50,6 +50,18 @@ public class Skupina {
 		return this.stUporabnikov;
 	}
 
+	public void setStUporabnikov(int stUporabnikov) {
+		this.stUporabnikov = stUporabnikov;
+	}
+
+	public Collection<Uporabnik> getUporabniki() {
+		return uporabniki;
+	}
+
+	public void setUporabniki(Collection<Uporabnik> uporabniki) {
+		this.uporabniki = uporabniki;
+	}
+
 	/**
 	 * 
 	 * @param nazivSkupine

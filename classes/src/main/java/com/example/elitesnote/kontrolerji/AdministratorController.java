@@ -1,6 +1,7 @@
 package com.example.elitesnote.kontrolerji;
 
 import com.example.elitesnote.dao.AdministratorRepository;
+import com.example.elitesnote.dao.Vloga;
 import com.example.elitesnote.razredi.Administrator;
 import com.example.elitesnote.razredi.Skupina;
 import com.example.elitesnote.razredi.Uporabnik;
@@ -49,5 +50,15 @@ public class AdministratorController {
             return false;
         adminDao.deleteById(id);
         return true;
+    }
+
+    // Sprint 2; vloga administratorja
+    @GetMapping("/vloga/{id}")
+    public Vloga vrniAdminVlogo(@PathVariable(name = "id") Long id){
+        Vloga vloga = adminDao.findById(id).get().getVloga();
+        if (vloga == null){
+            vloga = Vloga.ADMINISTRATOR;
+        }
+        return vloga;
     }
 }
