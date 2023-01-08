@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -48,6 +49,18 @@ public class SeznamController {
     @GetMapping("/uporabnik/{ime}")
     public Iterable<Seznam> vrniVsebineOdSeznama(@PathVariable(name = "ime") String ime){
         return seznamDao.seznamiOdUporabnika(ime);
+    }
+
+    // Sprint 3; poizvedba s 3 modeli
+    @GetMapping("/ime/{ime}")
+    public List vrniSeznamUporabnikaVsebino(@PathVariable(name = "ime") String ime){
+        return seznamDao.seznamUporabnikVsebina(ime);
+    }
+
+    // Sprint 3; poizvedba s 4 modeli
+    @GetMapping("/uporabnik_in_admin/{ime}")
+    public List vrniUporabnikaVsebinoAdmina(@PathVariable(name = "ime") String ime){
+        return seznamDao.uporabnikVsebinaAdmin(ime);
     }
 
     //2. sprint

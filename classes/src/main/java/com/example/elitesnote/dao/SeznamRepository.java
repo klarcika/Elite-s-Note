@@ -16,10 +16,17 @@ public interface SeznamRepository extends CrudRepository<Seznam, Long> {
     @Query(value = "SELECT s.* FROM Seznam s INNER JOIN Uporabnik u ON s.uporabnik = u.id WHERE uporabnisko_ime = ?1", nativeQuery = true)
     List<Seznam> seznamiOdUporabnika(String ime);
 
-    // 2 sprint
-  //  @Query(value = "SELECT * FROM razredi.Seznam s INNER JOIN razredi.Uporabnik u  ON s.uporabnik=u.id HAVING  ime_seznama='% a %' ", nativeQuery = true)
- //   List<Seznam> seznami(String naziv);
+    // Sprint 3; poizvedba s 3 modeli
+    @Query(value = "SELECT uporabnisko_ime, ime_seznama, naslov FROM Seznam s " +
+            "INNER JOIN Uporabnik u ON s.uporabnik = u.id INNER JOIN Vsebina v ON v.seznam_id = s.id", nativeQuery = true)
+    List seznamUporabnikVsebina(String ime);
 
+    // Sprint 3; poizvedba s 4 modeli
+    @Query(value = "SELECT uporabnisko_ime, naslov, admin_ime FROM Seznam s INNER JOIN Uporabnik u ON s.uporabnik = u.id " +
+            "INNER JOIN Vsebina v ON v.seznam_id = s.id INNER JOIN Administrator a ON v.administrator_id = a.id", nativeQuery = true)
+    List uporabnikVsebinaAdmin(String ime);
+
+    // 2 sprint
     @Query(value = "SELECT * FROM Seznam s INNER JOIN Uporabnik u ON s.uporabnik=u.id HAVING  s.ime_seznama='anime'", nativeQuery = true)
      List<Seznam> seznami(long id);
 }

@@ -20,8 +20,13 @@ public interface VsebinaRepository extends CrudRepository<Vsebina, Long> {
     Vsebina vsebinaNaslovZanr(Long id, String naslov, String zanr);
 
     // Sprint 2; poizvedba z 2 modeloma
-    @Query(value = "SELECT v.* FROM Vsebina v INNER JOIN Seznam s ON v.seznam_id = s.id WHERE ime_seznama = ?1", nativeQuery = true)
+    @Query(value = "SELECT v.* FROM Vsebina v INNER JOIN Seznam s ON v.seznam = s.id WHERE ime_seznama = ?1", nativeQuery = true)
     List<Vsebina> vsebineIzSeznama(String ime);
+
+    // Sprint 3; poizvedba z 3 modeloma
+    @Query(value = "SELECT naslov, ime_seznama, admin_ime FROM Vsebina v " +
+            "INNER JOIN Seznam s ON v.seznam = s.id INNER JOIN Administrator a ON v.administrator_id = a.id", nativeQuery = true)
+    List vsebinaSeznamAdmin(String ime);
 
     // 2 sprint
     @Query(value = "SELECT * FROM razredi.Vsebina v INNER JOIN razredi.Administrator a  ON v.administrator_id=administrator.id HAVING  naslov ='%a%' ", nativeQuery = true)

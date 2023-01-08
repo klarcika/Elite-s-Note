@@ -58,6 +58,7 @@ public class UporabnikController {
         return ResponseEntity.ok(pr);
     }
 
+
     // registracija
     @PostMapping("/registracija")
     public boolean registracijaUporabnika(@RequestBody Uporabnik uporabnik) throws NoSuchAlgorithmException {

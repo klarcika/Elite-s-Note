@@ -19,7 +19,7 @@ public interface AdministratorRepository extends CrudRepository<Administrator, L
     List<Administrator> vrniDolocenegaAdmina2(String adminIme, String geslo);
 
     //3. sprint
-    @Query(value = "SELECT a.id, v.naslov FROM administrator a INNER JOIN Vsebina v ON a.id=vsebina.administrator.id INNER JOIN Seznam s ON vsebina.seznam_id=seznam.id WHERE s.ime_seznama='%a%'", nativeQuery = true)
+    @Query(value = "SELECT a.id, v.naslov FROM Administrator a INNER JOIN Vsebina v ON a.id=vsebina.administrator.id INNER JOIN Seznam s ON vsebina.seznam_id=seznam.id WHERE s.ime_seznama='%a%'", nativeQuery = true)
     List vrniAdminaInVsebine(String ime);
 
 

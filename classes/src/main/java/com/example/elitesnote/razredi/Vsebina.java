@@ -20,7 +20,7 @@ public class Vsebina {
 	private Administrator administrator;
 
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="seznam_id")
+	@JoinColumn(name="seznam")
 	@OnDelete( action= OnDeleteAction.CASCADE) // vse se zbrise
 	@JsonIgnore
 	private Seznam seznam;
